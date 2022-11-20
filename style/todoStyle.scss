@@ -1,0 +1,134 @@
+#Todo_container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 300px 150px 0;
+  /* صفحه اول */
+  #todoList_box,
+  #createTodo_box {
+    background-color: #efefef;
+    width: 40%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    cursor: pointer;
+    img {
+      background-color: #efefef;
+      width: 100px;
+      height: 100px;
+      transition: 300ms ease;
+    }
+    h3 {
+      font-size: 2.25rem;
+      margin-top: 40%;
+      margin-bottom: 2rem;
+    }
+  }
+  #createTodo_box:hover img {
+    transform: rotate(-180deg) translateY(0);
+  }
+  #todoList_box:hover img {
+    transform: translateY(10px);
+  }
+  #createTodo_box img {
+    transform: rotate(-180deg) translateY(-10px);
+  }
+  .overflowScroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  /* صفحه دوم */
+  /* جدول لیست کار */
+  #todosTable {
+    background-color: #efefef;
+    width: 450px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    height: 500px;
+    border-collapse: collapse;
+    &:tr:nth-child(even) {
+      background-color: #ddd;
+    }
+    &:th {
+      font-size: 0.95rem;
+      border: 1px solid #3a3a3a;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    &:td {
+      font-size: 0.85rem;
+      border: 1px solid #3a3a3a;
+    }
+  }
+  //   /* فرم ایجاد کار جدید */
+  #createTodo_box form {
+    margin-top: 40%;
+    width: 80%;
+    input {
+      border: none;
+      outline: none;
+    }
+    .input:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+    }
+    .input:nth-child(2) {
+      margin: 1.5rem 0;
+    }
+    .submit {
+      display: flex;
+      align-items: flex-end;
+      justify-content: end;
+      width: 100%;
+    }
+    .submit input {
+      background-color: #3a3a3a;
+      color: #efefef;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    input,
+    label {
+      font-size: 1rem;
+      padding: 5px 12px;
+    }
+    #title {
+      width: 100%;
+    }
+  }
+  /* قسمت شخصی سازی */
+  #customize {
+    position: fixed;
+    height: 200px;
+    width: calc(100%-300px);
+    top: 50px;
+    left: 150px;
+    right: 150px;
+    background-color: #efefef;
+    padding: 1.5rem 2rem;
+    h2 {
+      padding-bottom: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid #3a3a3a;
+    }
+    .customize_wrapper {
+      padding-top: 0.25rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: start;
+      flex-wrap: wrap;
+      & > div {
+        width: 50%;
+        height: 42px;
+      }
+    }
+  }
+}

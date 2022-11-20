@@ -1,0 +1,201 @@
+@charset "UTF-8";
+#Todo_container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 300px 150px 0;
+  /* صفحه اول */
+  /* صفحه دوم */
+  /* جدول لیست کار */
+  /* قسمت شخصی سازی */
+}
+
+#Todo_container #todoList_box,
+#Todo_container #createTodo_box {
+  background-color: #efefef;
+  width: 40%;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+}
+
+#Todo_container #todoList_box img,
+#Todo_container #createTodo_box img {
+  background-color: #efefef;
+  width: 100px;
+  height: 100px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+#Todo_container #todoList_box h3,
+#Todo_container #createTodo_box h3 {
+  font-size: 2.25rem;
+  margin-top: 40%;
+  margin-bottom: 2rem;
+}
+
+#Todo_container #createTodo_box:hover img {
+  -webkit-transform: rotate(-180deg) translateY(0);
+          transform: rotate(-180deg) translateY(0);
+}
+
+#Todo_container #todoList_box:hover img {
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+#Todo_container #createTodo_box img {
+  -webkit-transform: rotate(-180deg) translateY(-10px);
+          transform: rotate(-180deg) translateY(-10px);
+}
+
+#Todo_container .overflowScroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#Todo_container #todosTable {
+  background-color: #efefef;
+  width: 450px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  height: 500px;
+  border-collapse: collapse;
+}
+
+#Todo_container #todosTable:tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+#Todo_container #todosTable:th {
+  font-size: 0.95rem;
+  border: 1px solid #3a3a3a;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#Todo_container #todosTable:td {
+  font-size: 0.85rem;
+  border: 1px solid #3a3a3a;
+}
+
+#Todo_container #createTodo_box form {
+  margin-top: 40%;
+  width: 80%;
+}
+
+#Todo_container #createTodo_box form input {
+  border: none;
+  outline: none;
+}
+
+#Todo_container #createTodo_box form .input:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+#Todo_container #createTodo_box form .input:nth-child(2) {
+  margin: 1.5rem 0;
+}
+
+#Todo_container #createTodo_box form .submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  width: 100%;
+}
+
+#Todo_container #createTodo_box form .submit input {
+  background-color: #3a3a3a;
+  color: #efefef;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+#Todo_container #createTodo_box form input,
+#Todo_container #createTodo_box form label {
+  font-size: 1rem;
+  padding: 5px 12px;
+}
+
+#Todo_container #createTodo_box form #title {
+  width: 100%;
+}
+
+#Todo_container #customize {
+  position: fixed;
+  height: 200px;
+  width: calc(100%-300px);
+  top: 50px;
+  left: 150px;
+  right: 150px;
+  background-color: #efefef;
+  padding: 1.5rem 2rem;
+}
+
+#Todo_container #customize h2 {
+  padding-bottom: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+#Todo_container #customize .customize_wrapper {
+  padding-top: 0.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#Todo_container #customize .customize_wrapper > div {
+  width: 50%;
+  height: 42px;
+}
+/*# sourceMappingURL=todoStyle.css.map */
