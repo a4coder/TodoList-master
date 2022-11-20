@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/knockout-3.5.1.js" deffer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="knockout-app" class="card">
+      <h2>Items</h2>
+      <ul data-bind="foreach: items">
+        <li data-bind="text: $data"></li>
+      </ul>
+
+      <!-- <loading-button
+        params="buttonText: 'Get All Items', 'action': fetchItems, 'onDone':onNewItems "
+      ></loading-button> -->
+    </div>
+    <script>
+      function ItemsListViewModel() {
+        var self = this;
+
+        self.items = ko.observableArray([
+          //Starts empty...
+          "Example Item 1",
+          "Example Item 2",
+        ]);
+
+        // self.fetchItems = function (callback) {
+        //   console.log("fetch items!");
+        //   setTimeout(function () {
+        //     var MOCK_RESPONSE = {
+        //       items: ["I", "Found", "Some", "Items"],
+        //     };
+        //     callback(MOCK_RESPONSE.items);
+        //   }, 2000);
+        // };
+
+        // self.onNewItems = function (newItems) {
+        //   self.items(newItems);
+        // };
+      }
+
+      // ko.components.register("loading-button", {
+      //   template: [
+      //     '<button data-bind="click: onClick, css: {loading: isLoading }" class="LoadingButton">',
+      //     '<span data-bind="text: buttonText"></span>',
+      //     "</button>",
+      //   ].join(""),
+      //   viewModel: function (params) {
+      //     var self = this;
+      //     self.buttonText = ko.observable(params.buttonText);
+      //     self.isLoading = ko.observable(false);
+
+      //     self.onClick = function () {
+      //       self.isLoading(true);
+      //       params.action(function (data) {
+      //         self.isLoading(false);
+      //         params.onDone(data);
+      //       });
+      //     };
+      //   },
+      // });
+
+      const knockoutApp = document.querySelector("#knockout-app");
+      ko.applyBindings(new ItemsListViewModel(), knockoutApp);
+    </script>
+  </body>
+</html>
