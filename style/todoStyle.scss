@@ -36,6 +36,9 @@
   #createTodo_box img {
     transform: rotate(-180deg) translateY(-10px);
   }
+  #todoList_box.displayBlock {
+    display: block;
+  }
   .overflowScroll {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -44,7 +47,8 @@
   /* جدول لیست کار */
   #todosTable {
     background-color: #efefef;
-    width: 450px;
+    margin: auto;
+    width: 100%;
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
@@ -113,21 +117,45 @@
     left: 150px;
     right: 150px;
     background-color: #efefef;
+    box-shadow: 0 5px 8px #3a3a3a4d;
     padding: 1.5rem 2rem;
+    overflow-y: scroll;
     h2 {
       padding-bottom: 0.75rem;
       text-align: center;
-      border-bottom: 1px solid #3a3a3a;
+      position: fixed;
+      width: calc(100% - 300px);
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #efefef;
+      height: 80px;
+      line-height: 5rem;
+      box-shadow: 0 5px 8px #3a3a3a15;
     }
     .customize_wrapper {
+      margin-top: 4rem;
       padding-top: 0.25rem;
       display: flex;
       align-items: flex-start;
       justify-content: start;
       flex-wrap: wrap;
+
       & > div {
         width: 50%;
         height: 42px;
+        margin: 0.5rem 0;
+      }
+      .customize_box_1 {
+        input {
+          width: 90%;
+          max-width: 400px;
+          border: none;
+          outline: none;
+          background-color: transparent;
+          padding: 0.5rem 1rem;
+          box-shadow: 0 5px 8px #3a3a3a4d;
+        }
       }
     }
   }

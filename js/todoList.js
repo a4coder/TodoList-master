@@ -5,10 +5,10 @@ const todoListUrl = "http://localhost:8008/servicebus/run/todoList";
 // craete function: just building table rows
 const createTableRow = (arr) => {
   console.log(arr);
-  let tableRows = arr.map((elem) => {
+  let tableRows = arr.map((elem, index) => {
     return `
       <tr>
-        <td>${elem.Id}</td>
+        <td>${index + 1}</td>
         <td>${elem.taskTitle}</td>
         <td>${elem.completed ? "آری" : "خیر"}</td>
       </tr>`;
@@ -20,17 +20,18 @@ const createTableRow = (arr) => {
 function fetchData_In_TodoListWrap(arrayOfObject) {
   console.log(arrayOfObject);
   todoList_box.addEventListener("click", function () {
-    todoList_box.outerHTML = `
-                    <div id="todoList_box" class="overflowScroll">
-                      <table id="todosTable">
-                        <tr>
-                          <th>شماره</th>
-                          <th>عنوان</th>
-                          <th>تکمیل</th>
-                        </tr>
-                        ${createTableRow(arrayOfObject)}
-                    </table>
-                    <div>`;
+    todoList_box.outerHTML = [
+      `<div id="todoList_box" class="overflowScroll displayBlock">`,
+      `  <table id="todosTable">`,
+      `    <tr>`,
+      `     <th>شماره</th>`,
+      `     <th>عنوان</th>`,
+      `     <th>تکمیل</th>`,
+      `    </tr>`,
+      `    ${createTableRow(arrayOfObject)}`,
+      `  </table>`,
+      `<div>`,
+    ].join("");
   });
 }
 
@@ -50,3 +51,4 @@ try {
 } catch (e) {
   console.log(e);
 }
+
