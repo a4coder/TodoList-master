@@ -5,32 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- logo -->
-    <link rel="icon" href="./assets/images/logo.svg" />
+    <link rel="icon" href="public/assets/images/logo.svg" />
     <!-- css -->
-    <link rel="stylesheet" href="./style/base.css" />
-    <link rel="stylesheet" href="./style/todoStyle.css" />
-    <!-- js -->
-    <script src="./node_modules/axios/dist/axios.min.js" defer></script>
-    <script src="./js/library/knockout-3.5.1.js"></script>
-    <script src="./js/knockout.js"></script>
-    <script src="./js/createTodo.js" defer></script>
-    <script src="./js/todoList.js" defer></script>
+    <link rel="stylesheet" href="public/style/base.css" />
+    <link rel="stylesheet" href="public/style/todoStyle.css" />
     <!-- title -->
     <title>Alireza Shahryari_Todo</title>
   </head>
 
   <body>
     <div id="Todo_container">
-      <div id="todoList_box">
-        <h3>لیست کارها</h3>
-        <p data-bind="text:userName"></p>
-        <img src="./assets/images/logo.svg" />
-      </div>
-      <div id="createTodo_box">
-        <h3>افزودن کار</h3>
-        <p data-bind="text:userName"></p>
-        <img src="./assets/images/logo.svg" />
-      </div>
       <div id="customize">
         <h2>شخصی سازی</h2>
         <div class="customize_wrapper">
@@ -47,6 +31,22 @@
           <div class="customize_box">test</div>
         </div>
       </div>
+      <div id="todoList_box">
+        <h3>لیست کارها</h3>
+        <p data-bind="text:userName"></p>
+        <img src="public/assets/images/logo.svg" />
+      </div>
+      <div id="createTodo_box">
+        <h3>افزودن کار</h3>
+        <p data-bind="text:userName"></p>
+        <img src="public/assets/images/logo.svg" />
+      </div>
     </div>
+    <!-- js -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./model/db.js"></script>
+    <script src="public/js/knockout-3.5.1.js"></script>
+    <script src="./views/createTodo.js"></script>
+    <script src="./views/todoList.js"></script>
   </body>
 </html>
