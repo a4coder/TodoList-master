@@ -37,7 +37,8 @@
     transform: rotate(-180deg) translateY(-10px);
   }
   #todoList_box.displayBlock {
-    display: block;
+    display: block !important;
+    position: relative;
   }
   .overflowScroll {
     overflow-x: hidden;
@@ -46,6 +47,8 @@
   /* صفحه دوم */
   /* جدول لیست کار */
   #todosTable {
+    position: absolute;
+    top: 1rem;
     background-color: #efefef;
     margin: auto;
     width: 100%;

@@ -70,7 +70,8 @@
 }
 
 #Todo_container #todoList_box.displayBlock {
-  display: block;
+  display: block !important;
+  position: relative;
 }
 
 #Todo_container .overflowScroll {
@@ -79,6 +80,8 @@
 }
 
 #Todo_container #todosTable {
+  position: absolute;
+  top: 1rem;
   background-color: #efefef;
   margin: auto;
   width: 100%;

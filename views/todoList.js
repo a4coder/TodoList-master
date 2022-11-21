@@ -33,7 +33,7 @@ class ToDoTable {
         `  <td>${elem.taskTitle}</td>`,
         `  <td>${elem.completed ? "آری" : "خیر"}</td>`,
         `</tr>`,
-      ].join("");
+      ].join();
     });
   };
   static insertDataInHtmlElement = (htmlData, elementId) => {
