@@ -1,9 +1,9 @@
 const createTodo_box = document.getElementById("createTodo_box");
 
-createTodo_box.addEventListener("click", () => {
-  CreateTodo.insertFormInHtmlElement("createTodo_box");
-  CreateTodo.readFormFeildAndSendData();
-});
+// createTodo_box.addEventListener("click", () => {
+//   CreateTodo.insertFormInHtmlElement("createTodo_box");
+//   CreateTodo.readFormFeildAndSendData();
+// });
 
 class CreateTodo {
   //create form todo
@@ -13,21 +13,7 @@ class CreateTodo {
   };
   static createFormHtml = (id = "createTodoForm") => {
     return [
-      `<div id="createTodo_box" class="overflowScroll">`,
-      `  <form id="${id}">`,
-      `    <div class="input">`,
-      `      <label for="title">عنوان</label>`,
-      `      <input type="text" name="title" id="title" placeholder="عنوان را وارد کنید" />`,
-      `    </div>`,
-      `    <div class="input">`,
-      `      <input type="checkbox" name="complete" id="complete" placeholder="عنوان را وارد کنید" />`,
-      `      <label for="complete">کامل شده</label>`,
-      `    </div>`,
-      `    <div class="submit">`,
-      `      <input type="submit" name="submit" id="submit" value="ارسال" />`,
-      `    </div>`,
-      `  </form>`,
-      `<div>`,
+
     ].join("");
   };
   // Prepare the form to send information

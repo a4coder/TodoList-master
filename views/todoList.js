@@ -1,16 +1,13 @@
 // create table form database when user click on todoList_box
-const todoList_box = document.getElementById("todoList_box");
-todoList_box.addEventListener("click", () => {
-  ToDoTable.createTableFromDatabase();
-});
+// const todoList_box = document.getElementById("todoList_box");
+// todoList_box.addEventListener("click", () => {
+//   ToDoTable.insertTodosInTable("todoList_box");
+// });
 
 class ToDoTable {
-  // create table form database
-  static createTableFromDatabase = async () => {
-    const tableData = JSON.parse(await DB.getTodoItems());
-    ToDoTable.insertTodosInTable(tableData, "todoList_box");
-  };
-  static insertTodosInTable = async (tableData, elementId) => {
+  // create table from database
+  static createTableFromDatabase = async () => {};
+  static insertTodosInTable = async (elementId) => {
     const table = [
       `<div id="todoList_box" class="overflowScroll displayBlock">`,
       `  <table id="todosTable">`,
@@ -19,11 +16,17 @@ class ToDoTable {
       `     <th>عنوان</th>`,
       `     <th>تکمیل</th>`,
       `    </tr>`,
-      `    ${ToDoTable.createTableRow(tableData)}`,
+      `    <tbody data-bind="foreach: seats">`,
+      `      <tr>`,
+      `        <td data-bind="text: Id"></td>`,
+      `        <td data-bind="text: taskTitle"></td>`,
+      `        <td data-bind="text: completed"></td>`,
+      `      </tr>`,
+      `    </tbody>`,
       `  </table>`,
       `<div>`,
     ].join("");
-    ToDoTable.insertDataInHtmlElement(table, elementId);
+    document.getElementById(elementId).outerHTML = table;
   };
   static createTableRow = (arraysOfObject) => {
     return arraysOfObject.map((elem, index) => {
@@ -36,14 +39,7 @@ class ToDoTable {
       ].join();
     });
   };
-  static insertDataInHtmlElement = (htmlData, elementId) => {
-    const element = document.querySelector(`#${elementId}`);
-    console.log(htmlData);
-    element.outerHTML = htmlData;
-  };
+  static insertDataInHtmlElement = (htmlData, elementId) => {};
   // update table form user input
-  static updateForm = async () => {
-    const tableData = JSON.parse(await DB.getTodoItems());
-    ToDoTable.insertTodosInTable(tableData, "todoList_box");
-  };
+  static updateForm = async () => {};
 }
