@@ -20,7 +20,7 @@
     <div id="Todo_container">
       <div id="todoList_box" data-bind="click: () => showTable(true)">
         <div
-          data-bind=" ifnot: showTable()"
+          data-bind=" hidden: showTable()"
           id="todoList_box_1"
           class="displayBlock"
         >
@@ -29,7 +29,7 @@
           <img src="public/assets/images/logo.svg" />
         </div>
         <div
-          data-bind="if: showTable()"
+          data-bind="visible: showTable()"
           id="todoList_box2"
           class="overflowScroll displayBlock"
         >
@@ -42,9 +42,9 @@
               </tr>
             </thead>
             <tbody>
-              <!-- ko foreach: seats() -->
+              <!-- ko foreach: allTodo() -->
               <tr>
-                <td data-bind="text: $data.index"></td>
+                <td data-bind="text: $index"></td>
                 <td data-bind="text: $data.taskTitle"></td>
                 <td data-bind="text: $data.completed"></td>
               </tr>
@@ -53,17 +53,13 @@
           </table>
         </div>
       </div>
-      <div id="createTodo_box" data-bind="click: () => showForm(true)">
-        <div id="createTodo_box1" data-bind=" ifnot: showForm()">
+      <div id="createTodo_box">
+        <div id="createTodo_box1" data-bind=" hidden: showForm()">
           <h3>افزودن کار</h3>
           <p data-bind="text: userName"></p>
           <img src="public/assets/images/logo.svg" />
         </div>
-        <div
-          id="createTodo_box2"
-          class="overflowScroll"
-          data-bind=" if: showForm()"
-        >
+        <div id="createTodo_box2" class="overflowScroll">
           <form id="createTodoForm">
             <div class="input">
               <label for="title">عنوان</label>
@@ -72,6 +68,7 @@
                 name="title"
                 id="title"
                 placeholder="عنوان را وارد کنید"
+                data-bind="value: taskTitle"
               />
             </div>
             <div class="input">
@@ -79,7 +76,7 @@
                 type="checkbox"
                 name="complete"
                 id="complete"
-                placeholder="عنوان را وارد کنید"
+                data-bind="checked: completed"
               />
               <label for="complete">کامل شده</label>
             </div>
@@ -93,7 +90,7 @@
 
     <!-- js -->
     <script src="public/js/knockout-3.5.1.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="public/js/bootstrap.bundle.min.js"></script> -->
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./model/db.js"></script>
     <script src="./model/viewModel.js"></script>
