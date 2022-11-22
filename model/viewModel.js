@@ -7,6 +7,9 @@ class ServerDataViewModel {
     this.taskTitle = ko.observable("");
     this.completed = ko.observable(false);
   }
+  addAllTodo = function (item) {
+    this.allTodo.push(item);
+  };
 }
 
 const createBodyRequest = (titleValue, completedValue) => {
@@ -45,8 +48,13 @@ const fetchData = async () => {
       taskTitle: ServerDataObject.taskTitle(),
       completed: ServerDataObject.completed(),
     };
+
     console.log(x);
-    ServerDataObject.allTodo().push(x);
+    console.log(ServerDataObject.allTodo());
+    ServerDataObject.addAllTodo(x)
+    console.log(ServerDataObject.allTodo());
   });
 };
 fetchData();
+
+// [{"Name":"taskTitle","Value":"این یک مورد آزمایشی است"},{"Name":"completed","Value":false}]
