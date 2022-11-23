@@ -1,5 +1,6 @@
 class ServerDataViewModel {
   constructor(data) {
+    this.completedString = ko.observable("false");
     // customize
     this.userName = ko.observable("علیرضا شهریاری");
     // visible and hidden variable
@@ -7,9 +8,23 @@ class ServerDataViewModel {
     this.showForm = ko.observable(false);
     // array of all todo in table
     this.allTodo = ko.observableArray(data);
+    this.whichShowData = ko.observable("all");
     // add todo
     this.taskTitle = ko.observable("");
     this.completed = ko.observable(false);
+    this.numOfAllTodos = ko.observable(this.allTodo().length);
+    this.numOfDoneTodos = ko.observable(
+      this.allTodo().filter((elem) => elem.completed == true).length
+    );
+    this.numOfNotDoneTodos = ko.observable(
+      this.allTodo().filter((elem) => elem.completed == false).length
+    );
+    this.doneTodos = ko.observableArray(
+      this.allTodo().filter((elem) => elem.completed == true)
+    );
+    this.notDoneTodos = ko.observableArray(
+      this.allTodo().filter((elem) => elem.completed == false)
+    );
   }
   // update table
   addTodo = function (item) {
@@ -20,6 +35,13 @@ class ServerDataViewModel {
     var previousComplete = this.completed();
     this.completed(!previousComplete);
     console.log(previousComplete);
+  }
+  // delete task
+  deleteTask(id) {
+    const x = this.allTodo().filter((elem) => elem.Id != id);
+    this.allTodo(x);
+
+    
   }
 }
 
@@ -38,14 +60,32 @@ const sendFormDataTodo = async (data) => {
     console.log(error.message);
   }
 };
-
 const fetchTodos = async () => {
   const todoItems = await DB.getTodoItems();
   const ServerDataObject = new ServerDataViewModel(todoItems);
-  ko.applyBindings(ServerDataObject);
+  console.log(todoItems);
 
+  ServerDataObject.completedString.subscribe(() => {
+    if (ServerDataObject.completed() == true) {
+      ServerDataObject.completed(false);
+    } else {
+      ServerDataObject.completed(true);
+    }
+  });
+  ServerDataObject.whichShowData.subscribe(() => {
+    if (ServerDataObject.whichShowData() == "all") {
+      ServerDataObject.allTodo(todoItems);
+    }
+    if (ServerDataObject.whichShowData() == "done") {
+      ServerDataObject.allTodo(ServerDataObject.doneTodos);
+    }
+    if (ServerDataObject.whichShowData() == "notDone") {
+      ServerDataObject.allTodo(ServerDataObject.notDoneTodos);
+    }
+  });
+  ko.applyBindings(ServerDataObject);
+  window.getVM = () => ServerDataObject;
   const createTodoForm = document.getElementById("createTodoForm");
-  console.log(createTodoForm);
 
   createTodoForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -64,3 +104,4 @@ const fetchTodos = async () => {
   });
 };
 fetchTodos();
+// 0: {Id: 198, taskTitle: 'این یک داده آزمایشی است', completed: false}

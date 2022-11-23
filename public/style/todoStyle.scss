@@ -18,13 +18,13 @@
     & > div {
       margin-bottom: 2rem;
       & > * {
-        text-align: center;
+        text-align: right;
         color: #f6f7f9;
-        padding: 0.5rem 1rem;
-        width: 90%;
+        padding: 0.5rem 2rem 0.5rem 1rem;
+        width: 100%;
         border: none;
         outline: none;
-        background-color: rgba(88, 175, 223, 0.1);
+        background-color: rgba(88, 176, 223, 0.051);
         transition: 300ms ease;
         &:hover {
           background-color: rgba(78, 156, 198, 0.1);
@@ -109,18 +109,40 @@
     text-align: center;
     height: 500px;
     border-collapse: collapse;
-    &:tr:nth-child(even) {
-      background-color: #ddd;
+    thead {
+      th {
+        font-size: 1.6rem;
+        padding: 1.2rem 0;
+      }
     }
-    &:th {
-      font-size: 0.95rem;
-      border: 1px solid #3a3a3a;
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
-    &:td {
-      font-size: 0.85rem;
-      border: 1px solid #3a3a3a;
+    tbody {
+      tr:nth-child(even) {
+        background-color: #292f3925;
+      }
+      td {
+        font-size: 1.1rem;
+        padding: 0.7rem 0;
+      }
+      .edit {
+        button {
+          background-color: #60eff410;
+          outline: none;
+          border: none;
+          color: #fff;
+          padding: 0.2rem 0.6rem;
+          border-radius: 50px;
+        }
+      }
+      .delete {
+        button {
+          background-color: #f460601e;
+          outline: none;
+          border: none;
+          color: #fff;
+          padding: 0.2rem 0.6rem;
+          border-radius: 50px;
+        }
+      }
     }
   }
 }
@@ -153,7 +175,7 @@
   .createTodo {
     position: relative;
     margin-top: 150px;
-    background-color: rgb(95, 95, 95);
+    background-color: rgba(88, 175, 223, 0.12);
     padding: 3rem 2rem;
     img {
       width: 100px;
@@ -173,7 +195,6 @@
       padding-right: 2rem;
     }
     form {
-      background-color: rgb(105, 105, 105);
       width: 400px;
       height: auto;
       padding: 4rem;
@@ -182,6 +203,7 @@
       align-items: flex-start;
       justify-content: center;
       flex-direction: column;
+      background-color: rgba(88, 175, 223, 0.1);
       input {
         margin-bottom: 2rem;
         border: none;
@@ -200,9 +222,9 @@
         text-align: left;
         input#submit {
           margin: auto;
-          background-color: #353535;
+          background-color: #23272f;
           color: #efefef;
-          padding: 0.3rem 0.9rem;
+          padding: 0.3rem 1.3rem;
         }
       }
     }

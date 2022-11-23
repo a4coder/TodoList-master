@@ -23,7 +23,6 @@
   </head>
 
   <body>
-    <!-- <div id="createTodo_box" data-bind="click: () => showForm(true), clickBubble: false"> -->
     <div id="createTodo_box">
       <div class="createTodo">
         <div class="close"><i class="fa-solid fa-xmark"></i></div>
@@ -31,7 +30,7 @@
           <span>افزودن کار جدید</span
           ><img src="public/assets/images/logo.svg" />
         </h3>
-        <p data-bind="text: userName"></p>
+        <p>نام کاربری: <span data-bind="text: userName"></span></p>
         <form id="createTodoForm">
           <div class="input">
             <input
@@ -52,7 +51,7 @@
             <label for="complete">کامل شده است</label>
           </div>
           <div class="submit">
-            <input type="submit" name="submit" id="submit" value="ارسال" />
+            <input type="submit" name="submit" id="submit" value="افزودن" />
           </div>
         </form>
       </div>
@@ -81,7 +80,8 @@
                     type="radio"
                     name="flexRadioDefault"
                     id="flexRadioDefault1"
-                    data-bind="checked: completed(true)"
+                    value="true"
+                    data-bind="checked: completedString"
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
                     انجام شده
@@ -93,7 +93,8 @@
                     type="radio"
                     name="flexRadioDefault"
                     id="flexRadioDefault2"
-                    data-bind="checked: completed(false)"
+                    value="false"
+                    data-bind="checked: completedString"
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     انجام نشده
@@ -101,13 +102,19 @@
                 </div>
               </div>
               <div class="customize_box_4">
-                <p>تعداد کل کارها: <span>50</span></p>
+                <p data-bind="click: () => whichShowData('all')">
+                  تعداد کل کارها: <span data-bind="text: numOfAllTodos"></span>
+                </p>
               </div>
               <div class="customize_box_5">
-                <p>انجام شده: <span>50</span></p>
+                <p data-bind="click: () => whichShowData('done')">
+                  انجام شده: <span data-bind="text: numOfDoneTodos"></span>
+                </p>
               </div>
               <div class="customize_box_6">
-                <p>باقی مانده: <span>50</span></p>
+                <p data-bind="click: () => whichShowData('notDone')">
+                  انجام نشده: <span data-bind="text: numOfNotDoneTodos"></span>
+                </p>
               </div>
             </div>
           </div>
@@ -138,16 +145,28 @@
                       <th>شماره</th>
                       <th>عنوان</th>
                       <th>تکمیل</th>
+                      <th>ویرایش</th>
+                      <th>حذف</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <!-- ko foreach: allTodo() -->
+                  <tbody data-bind="foreach: allTodo()">
                     <tr>
                       <td data-bind="text: $index"></td>
                       <td data-bind="text: $data.taskTitle"></td>
                       <td data-bind="text: $data.completed"></td>
+                      <td class="edit">
+                        <button data-bind="click: ()=>alert($data.Id)">
+                          ویراش
+                        </button>
+                      </td>
+                      <td class="delete">
+                        <button
+                          data-bind="click: ()=> $parent.deleteTask($data.Id)"
+                        >
+                          حذف
+                        </button>
+                      </td>
                     </tr>
-                    <!-- /ko -->
                   </tbody>
                 </table>
               </div>
@@ -182,3 +201,4 @@
 </html>
 <!-- data-bind="chacked: completed, click: toggleCompleted"
 data-bind="chacked: completed, click: toggleCompleted" -->
+<!-- data-bind="event: {submit: xvcxcv}" -->

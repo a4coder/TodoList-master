@@ -23,13 +23,13 @@
 }
 
 #customize .customize_wrapper > div > * {
-  text-align: center;
+  text-align: right;
   color: #f6f7f9;
-  padding: 0.5rem 1rem;
-  width: 90%;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  width: 100%;
   border: none;
   outline: none;
-  background-color: rgba(88, 175, 223, 0.1);
+  background-color: rgba(88, 176, 223, 0.051);
   -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
@@ -150,20 +150,36 @@
   border-collapse: collapse;
 }
 
-#Todo_container #todosTable:tr:nth-child(even) {
-  background-color: #ddd;
+#Todo_container #todosTable thead th {
+  font-size: 1.6rem;
+  padding: 1.2rem 0;
 }
 
-#Todo_container #todosTable:th {
-  font-size: 0.95rem;
-  border: 1px solid #3a3a3a;
-  padding-top: 12px;
-  padding-bottom: 12px;
+#Todo_container #todosTable tbody tr:nth-child(even) {
+  background-color: #292f3925;
 }
 
-#Todo_container #todosTable:td {
-  font-size: 0.85rem;
-  border: 1px solid #3a3a3a;
+#Todo_container #todosTable tbody td {
+  font-size: 1.1rem;
+  padding: 0.7rem 0;
+}
+
+#Todo_container #todosTable tbody .edit button {
+  background-color: #60eff410;
+  outline: none;
+  border: none;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+}
+
+#Todo_container #todosTable tbody .delete button {
+  background-color: #f460601e;
+  outline: none;
+  border: none;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
 }
 
 #createTodo_box {
@@ -205,7 +221,7 @@
 #createTodo_box .createTodo {
   position: relative;
   margin-top: 150px;
-  background-color: #5f5f5f;
+  background-color: rgba(88, 175, 223, 0.12);
   padding: 3rem 2rem;
 }
 
@@ -230,7 +246,6 @@
 }
 
 #createTodo_box .createTodo form {
-  background-color: dimgray;
   width: 400px;
   height: auto;
   padding: 4rem;
@@ -248,6 +263,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: rgba(88, 175, 223, 0.1);
 }
 
 #createTodo_box .createTodo form input {
@@ -285,9 +301,9 @@
 
 #createTodo_box .createTodo form .submit input#submit {
   margin: auto;
-  background-color: #353535;
+  background-color: #23272f;
   color: #efefef;
-  padding: 0.3rem 0.9rem;
+  padding: 0.3rem 1.3rem;
 }
 
 .right-0 {
