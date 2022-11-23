@@ -11,107 +11,174 @@
     <link rel="stylesheet" href="public/style/base.css" />
     <link rel="stylesheet" href="public/style/todoStyle.css" />
     <!-- icons -->
-    <link rel="stylesheet" href="public/style/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- title -->
     <title>Alireza Shahryari_Todo</title>
   </head>
 
   <body>
-    <div id="Todo_container">
-      <div id="todoList_box" data-bind="click: () => showTable(true)">
-        <div
-          data-bind=" hidden: showTable()"
-          id="todoList_box_1"
-          class="displayBlock"
-        >
-          <h3 data-bind="">لیست کارها</h3>
-          <p data-bind="text: userName"></p>
-          <img src="public/assets/images/logo.svg" />
-        </div>
-        <div
-          data-bind="visible: showTable()"
-          id="todoList_box2"
-          class="overflowScroll displayBlock"
-        >
-          <table id="todosTable">
-            <thead>
-              <tr>
-                <th>شماره</th>
-                <th>عنوان</th>
-                <th>تکمیل</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- ko foreach: allTodo() -->
-              <tr>
-                <td data-bind="text: $index"></td>
-                <td data-bind="text: $data.taskTitle"></td>
-                <td data-bind="text: $data.completed"></td>
-              </tr>
-              <!-- /ko -->
-            </tbody>
-          </table>
-        </div>
+    <!-- <div id="createTodo_box" data-bind="click: () => showForm(true), clickBubble: false"> -->
+    <div id="createTodo_box">
+      <div class="createTodo">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <h3 data-bind="">
+          <span>افزودن کار جدید</span
+          ><img src="public/assets/images/logo.svg" />
+        </h3>
+        <p data-bind="text: userName"></p>
+        <form id="createTodoForm">
+          <div class="input">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="عنوان را وارد کنید"
+              data-bind="value: taskTitle"
+            />
+          </div>
+          <div class="input">
+            <input
+              type="checkbox"
+              name="complete"
+              id="complete"
+              data-bind="checked: completed"
+            />
+            <label for="complete">کامل شده است</label>
+          </div>
+          <div class="submit">
+            <input type="submit" name="submit" id="submit" value="ارسال" />
+          </div>
+        </form>
       </div>
-      <div id="createTodo_box">
-        <div id="createTodo_box1" data-bind=" hidden: showForm()">
-          <h3>افزودن کار</h3>
-          <p data-bind="text: userName"></p>
-          <img src="public/assets/images/logo.svg" />
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-3">
+          <div id="customize">
+            <h2>تغییر وضعیت</h2>
+            <div class="customize_wrapper">
+              <div class="customize_box_0">
+                <button>افزودن کار جدید</button>
+              </div>
+              <div class="customize_box_1">
+                <input
+                  id="userNameInput"
+                  data-bind="value:userName,valueUpdate:'keyup'"
+                  placeholder="نام کاربری را وارد کنید"
+                />
+              </div>
+              <div class="customize_box_3">
+                <div><span>حالت پیشفرض انجام کار</span></div>
+                <div>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    data-bind="checked: completed(true)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    انجام شده
+                  </label>
+                </div>
+                <div>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    data-bind="checked: completed(false)"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    انجام نشده
+                  </label>
+                </div>
+              </div>
+              <div class="customize_box_4">
+                <p>تعداد کل کارها: <span>50</span></p>
+              </div>
+              <div class="customize_box_5">
+                <p>انجام شده: <span>50</span></p>
+              </div>
+              <div class="customize_box_6">
+                <p>باقی مانده: <span>50</span></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="createTodo_box2" class="overflowScroll">
-          <form id="createTodoForm">
-            <div class="input">
-              <label for="title">عنوان</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                placeholder="عنوان را وارد کنید"
-                data-bind="value: taskTitle"
-              />
+        <div class="col-9">
+          <div id="Todo_container">
+            <div id="todoList_box" data-bind="click: () => showTable(true)">
+              <div
+                data-bind=" hidden: showTable()"
+                id="todoList_box_1"
+                class="displayBlock"
+              >
+                <h3 data-bind="">لیست کارها</h3>
+                <p>نام کاربری: <span data-bind="text: userName"></span></p>
+                <div class="see">
+                  <h4>مشاهده لیست</h4>
+                  <i class="fa-solid fa-eye"></i>
+                </div>
+              </div>
+              <div
+                data-bind="visible: showTable()"
+                id="todoList_box2"
+                class="overflowScroll displayBlock"
+              >
+                <table id="todosTable">
+                  <thead>
+                    <tr>
+                      <th>شماره</th>
+                      <th>عنوان</th>
+                      <th>تکمیل</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- ko foreach: allTodo() -->
+                    <tr>
+                      <td data-bind="text: $index"></td>
+                      <td data-bind="text: $data.taskTitle"></td>
+                      <td data-bind="text: $data.completed"></td>
+                    </tr>
+                    <!-- /ko -->
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="input">
-              <input
-                type="checkbox"
-                name="complete"
-                id="complete"
-                data-bind="checked: completed"
-              />
-              <label for="complete">کامل شده</label>
-            </div>
-            <div class="submit">
-              <input type="submit" name="submit" id="submit" value="ارسال" />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- js -->
     <script src="public/js/knockout-3.5.1.js"></script>
-    <!-- <script src="public/js/bootstrap.bundle.min.js"></script> -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./model/db.js"></script>
     <script src="./model/viewModel.js"></script>
     <script src="./views/createTodo.js"></script>
     <script src="./views/todoList.js"></script>
+    <script>
+      const addTaskSection = document.querySelector("#createTodo_box");
+      const buttonShowAddTask = document.querySelector(
+        ".customize_box_0 button"
+      );
+      const buttonCloseAddTask = document.querySelector(".close i");
+      buttonShowAddTask.addEventListener("click", function (event) {
+        addTaskSection.classList.add("right-0");
+      });
+      buttonCloseAddTask.addEventListener("click", function (event) {
+        addTaskSection.classList.remove("right-0");
+      });
+    </script>
   </body>
 </html>
-
-<!-- <div id="customize">
-        <h2>وضعیت کارها</h2>
-        <div class="customize_wrapper">
-          <div class="customize_box_1">
-            <input
-              id="userNameInput"
-              data-bind="value:userName,valueUpdate:'keyup'"
-            />
-          </div>
-          <div class="customize_box">تعداد کارهای انجام داده شده</div>
-          <div class="customize_box">تعداد کارهای مانده</div>
-          <div class="customize_box">تعداد کل کارها</div>
-          <div class="customize_box">نزدیک ترین کار انجام نشده</div>
-          <div class="customize_box">محاسبه زمان احتمالی</div>
-        </div>
-      </div> -->
+<!-- data-bind="chacked: completed, click: toggleCompleted"
+data-bind="chacked: completed, click: toggleCompleted" -->

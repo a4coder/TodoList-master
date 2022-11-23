@@ -1,15 +1,26 @@
 class ServerDataViewModel {
   constructor(data) {
-    this.allTodo = ko.observableArray(data);
-    this.userName = ko.observable("Alireza Shahryari");
+    // customize
+    this.userName = ko.observable("علیرضا شهریاری");
+    // visible and hidden variable
     this.showTable = ko.observable(false);
-    this.showForm = ko.observable(true);
+    this.showForm = ko.observable(false);
+    // array of all todo in table
+    this.allTodo = ko.observableArray(data);
+    // add todo
     this.taskTitle = ko.observable("");
     this.completed = ko.observable(false);
   }
-  addAllTodo = function (item) {
+  // update table
+  addTodo = function (item) {
     this.allTodo.push(item);
   };
+  // toggle compelte
+  toggleCompleted() {
+    var previousComplete = this.completed();
+    this.completed(!previousComplete);
+    console.log(previousComplete);
+  }
 }
 
 const createBodyRequest = (titleValue, completedValue) => {
@@ -20,7 +31,6 @@ const createBodyRequest = (titleValue, completedValue) => {
   return todoUserInput;
 };
 const sendFormDataTodo = async (data) => {
-  console.log(data);
   try {
     const response = await axios.post(`${BASE_URL}/createTodo`, data);
     console.log(response);
@@ -29,32 +39,28 @@ const sendFormDataTodo = async (data) => {
   }
 };
 
-const fetchData = async () => {
+const fetchTodos = async () => {
   const todoItems = await DB.getTodoItems();
   const ServerDataObject = new ServerDataViewModel(todoItems);
   ko.applyBindings(ServerDataObject);
 
   const createTodoForm = document.getElementById("createTodoForm");
+  console.log(createTodoForm);
 
   createTodoForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    console.log("send clicked");
     sendFormDataTodo(
       createBodyRequest(
         ServerDataObject.taskTitle(),
         ServerDataObject.completed()
       )
     );
-    const x = {
+    const newTodo = {
       taskTitle: ServerDataObject.taskTitle(),
       completed: ServerDataObject.completed(),
     };
-
-    console.log(x);
-    console.log(ServerDataObject.allTodo());
-    ServerDataObject.addAllTodo(x)
-    console.log(ServerDataObject.allTodo());
+    ServerDataObject.addTodo(newTodo);
   });
 };
-fetchData();
-
-// [{"Name":"taskTitle","Value":"این یک مورد آزمایشی است"},{"Name":"completed","Value":false}]
+fetchTodos();

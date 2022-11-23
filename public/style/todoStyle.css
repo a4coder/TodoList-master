@@ -1,4 +1,48 @@
 @charset "UTF-8";
+/* قسمت شخصی سازی */
+#customize {
+  position: fixed;
+  width: 300px;
+  background-color: rgba(88, 175, 223, 0.1);
+  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
+          box-shadow: 0 5px 8px #3a3a3a4d;
+  min-height: calc(100vh - 96px);
+  top: 48px;
+  bottom: 48px;
+}
+
+#customize h2 {
+  -webkit-box-shadow: 0 5px 8px #3a3a3a15;
+          box-shadow: 0 5px 8px #3a3a3a15;
+  text-align: center;
+  padding: 2rem;
+}
+
+#customize .customize_wrapper > div {
+  margin-bottom: 2rem;
+}
+
+#customize .customize_wrapper > div > * {
+  text-align: center;
+  color: #f6f7f9;
+  padding: 0.5rem 1rem;
+  width: 90%;
+  border: none;
+  outline: none;
+  background-color: rgba(88, 175, 223, 0.1);
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+#customize .customize_wrapper > div > *:hover {
+  background-color: rgba(78, 156, 198, 0.1);
+}
+
+#customize .customize_wrapper .customize_box_1 input {
+  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
+          box-shadow: 0 5px 8px #3a3a3a4d;
+}
+
 #Todo_container {
   position: relative;
   display: -webkit-box;
@@ -10,18 +54,21 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 300px 150px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   /* صفحه اول */
   /* صفحه دوم */
   /* جدول لیست کار */
-  /* قسمت شخصی سازی */
 }
 
-#Todo_container > div {
+#Todo_container #todoList_box {
+  margin-bottom: 50px;
   position: relative;
-  width: 40%;
-  height: 500px;
-  background-color: #efefef;
+  width: 100%;
+  min-height: calc(100vh - 96px);
+  background-color: #343a46;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,9 +76,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -39,22 +86,50 @@
   cursor: pointer;
 }
 
-#Todo_container > div img {
-  background-color: #efefef;
-  width: 100px;
-  height: 100px;
+#Todo_container #todoList_box .see {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  margin-top: calc(90px + 30%);
+  background-color: #2f333d;
+  border-radius: 50% 30% 50px 30px;
+  padding: 1rem;
+}
+
+#Todo_container #todoList_box .see h4 {
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  color: #07a3a4;
+}
+
+#Todo_container #todoList_box .see i {
+  margin-right: 1rem;
+  font-size: 5rem;
+  color: #07a3a4;
   -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
 
-#Todo_container > div h3 {
+#Todo_container #todoList_box h3 {
   font-size: 2.25rem;
-  margin-top: 40%;
+  margin-top: 32px;
   margin-bottom: 2rem;
 }
 
-#Todo_container #todoList_box {
-  overflow-y: scroll;
+#Todo_container #todoList_box:hover h4 {
+  color: #60eff4;
+}
+
+#Todo_container #todoList_box:hover i {
+  color: #60eff4;
 }
 
 #Todo_container #todoList_box2 {
@@ -62,15 +137,10 @@
   height: 100%;
 }
 
-#Todo_container #createTodo_box2 {
-  width: 100%;
-  height: 100%;
-}
-
 #Todo_container #todosTable {
   position: absolute;
   top: 1rem;
-  background-color: #efefef;
+  background-color: #343a46;
   margin: auto;
   width: 100%;
   padding-top: 12px;
@@ -96,128 +166,131 @@
   border: 1px solid #3a3a3a;
 }
 
-#Todo_container #createTodo_box form {
-  margin-top: 40%;
-  width: 80%;
-}
-
-#Todo_container #createTodo_box form input {
-  border: none;
-  outline: none;
-}
-
-#Todo_container #createTodo_box form .input:nth-child(1) {
+#createTodo_box {
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  position: fixed;
+  width: 100%;
+  background-color: #23272f;
+  min-height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  left: 0;
+  z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
-}
-
-#Todo_container #createTodo_box form .input:nth-child(2) {
-  margin: 1.5rem 0;
-}
-
-#Todo_container #createTodo_box form .submit {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  width: 100%;
-}
-
-#Todo_container #createTodo_box form .submit input {
-  background-color: #3a3a3a;
   color: #efefef;
+}
+
+#createTodo_box .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#createTodo_box .close i {
+  font-size: 2rem;
+  color: #fff;
   cursor: pointer;
-  border: none;
-  outline: none;
 }
 
-#Todo_container #createTodo_box form input,
-#Todo_container #createTodo_box form label {
-  font-size: 1rem;
-  padding: 5px 12px;
+#createTodo_box .createTodo {
+  position: relative;
+  margin-top: 150px;
+  background-color: #5f5f5f;
+  padding: 3rem 2rem;
 }
 
-#Todo_container #createTodo_box form #title {
-  width: 100%;
+#createTodo_box .createTodo img {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  padding-right: 1rem;
 }
 
-#Todo_container #customize {
-  position: fixed;
-  height: 200px;
-  width: calc(100%-300px);
-  top: 50px;
-  left: 150px;
-  right: 150px;
-  background-color: #efefef;
-  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
-          box-shadow: 0 5px 8px #3a3a3a4d;
-  padding: 1.5rem 2rem;
-  overflow-y: scroll;
+#createTodo_box .createTodo p {
+  padding-right: 2rem;
+  color: #efefef;
 }
 
-#Todo_container #customize h2 {
-  padding-bottom: 0.75rem;
-  text-align: center;
-  position: fixed;
-  width: calc(100% - 300px);
-  top: 3rem;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background-color: #efefef;
-  height: 80px;
-  line-height: 5rem;
-  -webkit-box-shadow: 0 5px 8px #3a3a3a15;
-          box-shadow: 0 5px 8px #3a3a3a15;
+#createTodo_box .createTodo h3 {
+  color: #efefef;
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+  padding-right: 2rem;
 }
 
-#Todo_container #customize .customize_wrapper {
-  margin-top: 4rem;
-  padding-top: 0.25rem;
+#createTodo_box .createTodo form {
+  background-color: dimgray;
+  width: 400px;
+  height: auto;
+  padding: 4rem;
+  padding-right: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#Todo_container #customize .customize_wrapper > div {
-  width: 50%;
-  height: 42px;
-  margin: 0.5rem 0;
-}
-
-#Todo_container #customize .customize_wrapper .customize_box_1 input {
-  width: 90%;
-  max-width: 400px;
+#createTodo_box .createTodo form input {
+  margin-bottom: 2rem;
   border: none;
   outline: none;
-  background-color: transparent;
-  padding: 0.5rem 1rem;
-  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
-          box-shadow: 0 5px 8px #3a3a3a4d;
+}
+
+#createTodo_box .createTodo form input#title {
+  width: 300px !important;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+#createTodo_box .createTodo form input#title::-webkit-input-placeholder {
+  color: #353535;
+}
+
+#createTodo_box .createTodo form input#title:-ms-input-placeholder {
+  color: #353535;
+}
+
+#createTodo_box .createTodo form input#title::-ms-input-placeholder {
+  color: #353535;
+}
+
+#createTodo_box .createTodo form input#title::placeholder {
+  color: #353535;
+}
+
+#createTodo_box .createTodo form .submit {
+  width: 100%;
+  text-align: left;
+}
+
+#createTodo_box .createTodo form .submit input#submit {
+  margin: auto;
+  background-color: #353535;
+  color: #efefef;
+  padding: 0.3rem 0.9rem;
+}
+
+.right-0 {
+  right: 0 !important;
 }
 /*# sourceMappingURL=todoStyle.css.map */

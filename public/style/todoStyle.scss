@@ -1,41 +1,98 @@
+/* قسمت شخصی سازی */
+
+#customize {
+  position: fixed;
+  width: 300px;
+  // background-color: #23272f;
+  background-color: rgba(88, 175, 223, 0.1);
+  box-shadow: 0 5px 8px #3a3a3a4d;
+  min-height: calc(100vh - 96px);
+  top: 48px;
+  bottom: 48px;
+  h2 {
+    box-shadow: 0 5px 8px #3a3a3a15;
+    text-align: center;
+    padding: 2rem;
+  }
+  .customize_wrapper {
+    & > div {
+      margin-bottom: 2rem;
+      & > * {
+        text-align: center;
+        color: #f6f7f9;
+        padding: 0.5rem 1rem;
+        width: 90%;
+        border: none;
+        outline: none;
+        background-color: rgba(88, 175, 223, 0.1);
+        transition: 300ms ease;
+        &:hover {
+          background-color: rgba(78, 156, 198, 0.1);
+        }
+      }
+    }
+    .customize_box_1 {
+      input {
+        box-shadow: 0 5px 8px #3a3a3a4d;
+      }
+    }
+  }
+}
+
 #Todo_container {
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 300px 150px 0;
+  flex-direction: column;
   /* صفحه اول */
-  & > div {
+  #todoList_box {
+    margin-bottom: 50px;
     position: relative;
-    width: 40%;
-    height: 500px;
-    background-color: #efefef;
+    width: 100%;
+    min-height: calc(100vh - 96px);
+    background-color: #343a46;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
-    img {
-      background-color: #efefef;
-      width: 100px;
-      height: 100px;
+    .see {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: 300ms ease;
+      margin-top: calc(90px + 30%);
+      background-color: #2f333d;
+      border-radius: 50% 30% 50px 30px;
+      padding: 1rem;
+      h4 {
+        transition: 300ms ease;
+        color: #07a3a4;
+      }
+      i {
+        margin-right: 1rem;
+        font-size: 5rem;
+        color: #07a3a4;
+        transition: 300ms ease;
+      }
     }
     h3 {
       font-size: 2.25rem;
-      margin-top: 40%;
+      margin-top: 32px;
       margin-bottom: 2rem;
     }
-  }
-  #todoList_box {
-    overflow-y: scroll;
+    &:hover {
+      h4 {
+        color: #60eff4;
+      }
+      i {
+        color: #60eff4;
+      }
+    }
   }
   #todoList_box2 {
-    width: 100%;
-    height: 100%;
-  }
-  #createTodo_box2 {
     width: 100%;
     height: 100%;
   }
@@ -44,7 +101,7 @@
   #todosTable {
     position: absolute;
     top: 1rem;
-    background-color: #efefef;
+    background-color: #343a46;
     margin: auto;
     width: 100%;
     padding-top: 12px;
@@ -66,95 +123,92 @@
       border: 1px solid #3a3a3a;
     }
   }
-  //   /* فرم ایجاد کار جدید */
-  #createTodo_box form {
-    margin-top: 40%;
-    width: 80%;
-    input {
-      border: none;
-      outline: none;
-    }
-    .input:nth-child(1) {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      width: 100%;
-    }
-    .input:nth-child(2) {
-      margin: 1.5rem 0;
-    }
-    .submit {
-      display: flex;
-      align-items: flex-end;
-      justify-content: end;
-      width: 100%;
-    }
-    .submit input {
-      background-color: #3a3a3a;
-      color: #efefef;
+}
+
+#createTodo_box {
+  transition: 300ms ease;
+  position: fixed;
+  width: 100%;
+  background-color: #23272f;
+  min-height: 100vh;
+  top: 0;
+  bottom: 0;
+  right: -100%;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: #efefef;
+  .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    i {
+      font-size: 2rem;
+      color: #fff;
       cursor: pointer;
-      border: none;
-      outline: none;
-    }
-    input,
-    label {
-      font-size: 1rem;
-      padding: 5px 12px;
-    }
-    #title {
-      width: 100%;
     }
   }
-  /* قسمت شخصی سازی */
-  #customize {
-    position: fixed;
-    height: 200px;
-    width: calc(100%-300px);
-    top: 50px;
-    left: 150px;
-    right: 150px;
-    background-color: #efefef;
-    box-shadow: 0 5px 8px #3a3a3a4d;
-    padding: 1.5rem 2rem;
-    overflow-y: scroll;
-    h2 {
-      padding-bottom: 0.75rem;
-      text-align: center;
-      position: fixed;
-      width: calc(100% - 300px);
-      top: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #efefef;
-      height: 80px;
-      line-height: 5rem;
-      box-shadow: 0 5px 8px #3a3a3a15;
+  .createTodo {
+    position: relative;
+    margin-top: 150px;
+    background-color: rgb(95, 95, 95);
+    padding: 3rem 2rem;
+    img {
+      width: 100px;
+      height: 100px;
+      transition: 300ms ease;
+      padding-right: 1rem;
     }
-    .customize_wrapper {
-      margin-top: 4rem;
-      padding-top: 0.25rem;
+    p {
+      padding-right: 2rem;
+      color: #efefef;
+    }
+    h3 {
+      color: #efefef;
+      font-size: 2.25rem;
+
+      margin-bottom: 2rem;
+      padding-right: 2rem;
+    }
+    form {
+      background-color: rgb(105, 105, 105);
+      width: 400px;
+      height: auto;
+      padding: 4rem;
+      padding-right: 2rem;
       display: flex;
       align-items: flex-start;
-      justify-content: start;
-      flex-wrap: wrap;
-
-      & > div {
-        width: 50%;
-        height: 42px;
-        margin: 0.5rem 0;
+      justify-content: center;
+      flex-direction: column;
+      input {
+        margin-bottom: 2rem;
+        border: none;
+        outline: none;
       }
-      .customize_box_1 {
-        input {
-          width: 90%;
-          max-width: 400px;
-          border: none;
-          outline: none;
-          background-color: transparent;
-          padding: 0.5rem 1rem;
-          box-shadow: 0 5px 8px #3a3a3a4d;
+      input#title {
+        width: 300px !important;
+        padding: 0.4rem 0.6rem;
+        font-size: 1rem;
+        &::placeholder {
+          color: #353535;
+        }
+      }
+      .submit {
+        width: 100%;
+        text-align: left;
+        input#submit {
+          margin: auto;
+          background-color: #353535;
+          color: #efefef;
+          padding: 0.3rem 0.9rem;
         }
       }
     }
   }
+}
+
+.right-0 {
+  right: 0 !important;
 }
