@@ -23,10 +23,12 @@
   </head>
 
   <body>
-    <div id="createTodo_box">
+    <div id="createTodo_box" data-bind="class: rightClassStatus">
       <div class="createTodo">
-        <div class="close"><i class="fa-solid fa-xmark"></i></div>
-        <h3 data-bind="">
+        <div class="close">
+          <i data-bind="click: rightClassZero" class="fa-solid fa-xmark"></i>
+        </div>
+        <h3>
           <span>افزودن کار جدید</span
           ><img src="public/assets/images/logo.svg" />
         </h3>
@@ -56,6 +58,47 @@
         </form>
       </div>
     </div>
+    <div id="updateTodo_box" data-bind="class: leftClassStatus">
+      <div class="updateTodo">
+        <div class="close">
+          <i data-bind="click: leftClassZero" class="fa-solid fa-xmark"></i>
+        </div>
+        <h3>
+          <span>ویرایش کار</span><img src="public/assets/images/logo.svg" />
+        </h3>
+        <p>نام کاربری: <span data-bind="text: userName"></span></p>
+        <form id="updateTodoForm">
+          <div class="input">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="عنوان را وارد کنید"
+              data-bind="value: perTaskTitle"
+            />
+          </div>
+          <div class="input">
+            <input
+              type="checkbox"
+              name="complete"
+              id="complete"
+              data-bind="checked: perCompleted"
+            />
+            <label for="complete">کامل شده است</label>
+          </div>
+          <div class="submit">
+            <button>لغو درخواست</button>
+            <input
+              data-bind="click: sendUpdatedTask"
+              type="submit"
+              name="submit"
+              id="submit"
+              value="ویرایش"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="container mt-5">
       <div class="row">
         <div class="col-3">
@@ -63,7 +106,9 @@
             <h2>تغییر وضعیت</h2>
             <div class="customize_wrapper">
               <div class="customize_box_0">
-                <button>افزودن کار جدید</button>
+                <button data-bind="click: ()=> rightClsss(1)">
+                  افزودن کار جدید
+                </button>
               </div>
               <div class="customize_box_1">
                 <input
@@ -155,7 +200,9 @@
                       <td data-bind="text: $data.taskTitle"></td>
                       <td data-bind="text: $data.completed"></td>
                       <td class="edit">
-                        <button data-bind="click: ()=>alert($data.Id)">
+                        <button
+                          data-bind="click: ()=>$parent.updateTask($data)"
+                        >
                           ویراش
                         </button>
                       </td>
@@ -185,17 +232,7 @@
     <script src="./views/createTodo.js"></script>
     <script src="./views/todoList.js"></script>
     <script>
-      const addTaskSection = document.querySelector("#createTodo_box");
-      const buttonShowAddTask = document.querySelector(
-        ".customize_box_0 button"
-      );
-      const buttonCloseAddTask = document.querySelector(".close i");
-      buttonShowAddTask.addEventListener("click", function (event) {
-        addTaskSection.classList.add("right-0");
-      });
-      buttonCloseAddTask.addEventListener("click", function (event) {
-        addTaskSection.classList.remove("right-0");
-      });
+      // add
     </script>
   </body>
 </html>

@@ -192,7 +192,6 @@
   top: 0;
   bottom: 0;
   right: -100%;
-  left: 0;
   z-index: 99;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -306,7 +305,134 @@
   padding: 0.3rem 1.3rem;
 }
 
+#updateTodo_box {
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  position: fixed;
+  width: 100%;
+  background-color: #23272f;
+  min-height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  z-index: 99;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #efefef;
+}
+
+#updateTodo_box .close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#updateTodo_box .close i {
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+#updateTodo_box .updateTodo {
+  position: relative;
+  margin-top: 150px;
+  background-color: rgba(88, 175, 223, 0.12);
+  padding: 3rem 2rem;
+}
+
+#updateTodo_box .updateTodo img {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+  padding-right: 1rem;
+}
+
+#updateTodo_box .updateTodo p {
+  padding-right: 2rem;
+  color: #efefef;
+}
+
+#updateTodo_box .updateTodo h3 {
+  color: #efefef;
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm {
+  width: 400px;
+  height: auto;
+  padding: 4rem;
+  padding-right: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(88, 175, 223, 0.1);
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input {
+  margin-bottom: 2rem;
+  border: none;
+  outline: none;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input#title {
+  width: 300px !important;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input#title::-webkit-input-placeholder {
+  color: #353535;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input#title:-ms-input-placeholder {
+  color: #353535;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input#title::-ms-input-placeholder {
+  color: #353535;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm input#title::placeholder {
+  color: #353535;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm .submit {
+  width: 100%;
+  text-align: left;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm .submit input#submit {
+  margin: auto;
+  background-color: #23272f;
+  color: #efefef;
+  padding: 0.3rem 1.3rem;
+}
+
 .right-0 {
   right: 0 !important;
+}
+
+.left-0 {
+  left: 0 !important;
 }
 /*# sourceMappingURL=todoStyle.css.map */

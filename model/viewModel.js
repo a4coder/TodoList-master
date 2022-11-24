@@ -3,6 +3,8 @@ class ServerDataViewModel {
     this.completedString = ko.observable("false");
     // customize
     this.userName = ko.observable("علیرضا شهریاری");
+    this.leftClass = ko.observable(0);
+    this.rightClsss = ko.observable(0);
     // visible and hidden variable
     this.showTable = ko.observable(false);
     this.showForm = ko.observable(false);
@@ -12,6 +14,9 @@ class ServerDataViewModel {
     // add todo
     this.taskTitle = ko.observable("");
     this.completed = ko.observable(false);
+    this.perTaskTitle = ko.observable("");
+    this.perCompleted = ko.observable(false);
+    this.perId = ko.observable(0);
     this.numOfAllTodos = ko.observable(this.allTodo().length);
     this.numOfDoneTodos = ko.observable(
       this.allTodo().filter((elem) => elem.completed == true).length
@@ -26,7 +31,7 @@ class ServerDataViewModel {
       this.allTodo().filter((elem) => elem.completed == false)
     );
   }
-  // update table
+  // create table
   addTodo = function (item) {
     this.allTodo.push(item);
   };
@@ -37,11 +42,48 @@ class ServerDataViewModel {
     console.log(previousComplete);
   }
   // delete task
-  deleteTask(id) {
+  async deleteTask(id) {
     const x = this.allTodo().filter((elem) => elem.Id != id);
     this.allTodo(x);
-
-    
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/deleteTodo`,
+        JSON.stringify([{ Name: "ID", Value: id }])
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  // edit task
+  async updateTask(data) {
+    console.log(data);
+    this.leftClass(1);
+    this.perTaskTitle(data.taskTitle);
+    this.perCompleted(data.completed);
+    this.perId(data.Id);
+  }
+  async sendUpdatedTask() {
+    console.log(this.perCompleted(), this.perId(), this.perTaskTitle());
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/eidtTodo`,
+        JSON.stringify([
+          { Name: "taskTitle", Value: this.perTaskTitle() },
+          { Name: "completed", Value: this.perCompleted() },
+          { Name: "UID", Value: this.perId() },
+        ])
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  leftClassZero() {
+    this.leftClass(0);
+  }
+  rightClassZero() {
+    this.rightClsss(0);
   }
 }
 
@@ -83,6 +125,13 @@ const fetchTodos = async () => {
       ServerDataObject.allTodo(ServerDataObject.notDoneTodos);
     }
   });
+  ServerDataObject.leftClassStatus = ko.pureComputed(function () {
+    return ServerDataObject.leftClass() > 0 ? "left-0" : "";
+  }, ServerDataObject);
+  ServerDataObject.rightClassStatus = ko.pureComputed(function () {
+    return ServerDataObject.rightClsss() > 0 ? "right-0" : "";
+  }, ServerDataObject);
+
   ko.applyBindings(ServerDataObject);
   window.getVM = () => ServerDataObject;
   const createTodoForm = document.getElementById("createTodoForm");
