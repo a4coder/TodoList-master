@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- logo -->
-    <link rel="icon" href="public/assets/images/logo.svg" />
+    <!-- topArrow -->
+    <link rel="icon" href="public/assets/images/topArrow.svg" />
     <!-- css -->
     <link rel="stylesheet" href="public/style/bootstrap.min.css" />
     <link rel="stylesheet" href="public/style/base.css" />
@@ -19,10 +19,12 @@
       referrerpolicy="no-referrer"
     />
     <!-- title -->
-    <title>Alireza Shahryari_Todo</title>
+    <title>AlirezaShahryari_TodoList_Knockout</title>
   </head>
 
   <body>
+    <!-- section for add todo)-->
+    <!-- It is hidden at the beginning of the program -->
     <div id="createTodo_box" data-bind="class: rightClassStatus">
       <div class="createTodo">
         <div class="close">
@@ -30,7 +32,7 @@
         </div>
         <h3>
           <span>افزودن کار جدید</span
-          ><img src="public/assets/images/logo.svg" />
+          ><img src="public/assets/images/topArrow.svg" />
         </h3>
         <p>نام کاربری: <span data-bind="text: userName"></span></p>
         <form id="createTodoForm">
@@ -58,13 +60,16 @@
         </form>
       </div>
     </div>
+
+    <!-- section for eidt and update todo-->
+    <!-- It is hidden at the beginning of the program -->
     <div id="updateTodo_box" data-bind="class: leftClassStatus">
       <div class="updateTodo">
         <div class="close">
           <i data-bind="click: leftClassZero" class="fa-solid fa-xmark"></i>
         </div>
         <h3>
-          <span>ویرایش کار</span><img src="public/assets/images/logo.svg" />
+          <span>ویرایش کار</span><img src="public/assets/images/topArrow.svg" />
         </h3>
         <p>نام کاربری: <span data-bind="text: userName"></span></p>
         <form id="updateTodoForm">
@@ -99,6 +104,8 @@
         </form>
       </div>
     </div>
+
+    <!-- Basic user interface -->
     <div class="container mt-5">
       <div class="row">
         <div class="col-3">
@@ -201,7 +208,7 @@
                       <td data-bind="text: $data.completed"></td>
                       <td class="edit">
                         <button
-                          data-bind="click: ()=>$parent.updateTask($data)"
+                          data-bind="click: ()=>$parent.showUpdateTask($data)"
                         >
                           ویراش
                         </button>
@@ -224,18 +231,8 @@
     </div>
 
     <!-- js -->
-    <script src="public/js/knockout-3.5.1.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script src="./model/db.js"></script>
-    <script src="./model/viewModel.js"></script>
-    <script src="./views/createTodo.js"></script>
-    <script src="./views/todoList.js"></script>
-    <script>
-      // add
-    </script>
+    <!-- Start the program -->
+    <script type="module" src="./App.js"></script>
   </body>
 </html>
-<!-- data-bind="chacked: completed, click: toggleCompleted"
-data-bind="chacked: completed, click: toggleCompleted" -->
 <!-- data-bind="event: {submit: xvcxcv}" -->

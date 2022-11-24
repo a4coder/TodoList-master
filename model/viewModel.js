@@ -1,22 +1,33 @@
-class ServerDataViewModel {
+import "../public/js/axios.min.js";
+
+export default class ServerDataViewModel {
   constructor(data) {
     this.completedString = ko.observable("false");
-    // customize
+
+    // username info
     this.userName = ko.observable("علیرضا شهریاری");
+
+    // initial number for class (upadate and add todo section)
+    // use in method for show and hidden [leftClassZero, rightClassZero]
     this.leftClass = ko.observable(0);
     this.rightClsss = ko.observable(0);
-    // visible and hidden variable
+
+    // visible and hidden table after loaded index.html
     this.showTable = ko.observable(false);
-    this.showForm = ko.observable(false);
-    // array of all todo in table
+
+    // array of fetch data from db.js
     this.allTodo = ko.observableArray(data);
+
+    // customize: viewmodels button for show datas in table
     this.whichShowData = ko.observable("all");
-    // add todo
-    this.taskTitle = ko.observable("");
-    this.completed = ko.observable(false);
-    this.perTaskTitle = ko.observable("");
-    this.perCompleted = ko.observable(false);
-    this.perId = ko.observable(0);
+    this.doneTodos = ko.observableArray(
+      this.allTodo().filter((elem) => elem.completed == true)
+    );
+    this.notDoneTodos = ko.observableArray(
+      this.allTodo().filter((elem) => elem.completed == false)
+    );
+
+    // customize: number of todos
     this.numOfAllTodos = ko.observable(this.allTodo().length);
     this.numOfDoneTodos = ko.observable(
       this.allTodo().filter((elem) => elem.completed == true).length
@@ -24,23 +35,22 @@ class ServerDataViewModel {
     this.numOfNotDoneTodos = ko.observable(
       this.allTodo().filter((elem) => elem.completed == false).length
     );
-    this.doneTodos = ko.observableArray(
-      this.allTodo().filter((elem) => elem.completed == true)
-    );
-    this.notDoneTodos = ko.observableArray(
-      this.allTodo().filter((elem) => elem.completed == false)
-    );
+
+    // add todo section viewmodel
+    this.taskTitle = ko.observable("");
+    this.completed = ko.observable(false);
+
+    // edit todo section viewmodel
+    this.perTaskTitle = ko.observable("");
+    this.perCompleted = ko.observable(false);
+    this.perId = ko.observable(0);
   }
-  // create table
+
+  // create todo and add to table (ui and data base)
   addTodo = function (item) {
     this.allTodo.push(item);
   };
-  // toggle compelte
-  toggleCompleted() {
-    var previousComplete = this.completed();
-    this.completed(!previousComplete);
-    console.log(previousComplete);
-  }
+
   // delete task
   async deleteTask(id) {
     const x = this.allTodo().filter((elem) => elem.Id != id);
@@ -55,17 +65,24 @@ class ServerDataViewModel {
       console.log(error.message);
     }
   }
-  // edit task
-  async updateTask(data) {
-    console.log(data);
+
+  // show && save && edit task
+
+  // show
+  async showUpdateTask(data) {
+    // open update section html
     this.leftClass(1);
+    // read data from table and save in view model
     this.perTaskTitle(data.taskTitle);
     this.perCompleted(data.completed);
     this.perId(data.Id);
   }
+
+  // save
   async sendUpdatedTask() {
-    console.log(this.perCompleted(), this.perId(), this.perTaskTitle());
+    // use saved datas in viewmodel [this.perCompleted(), this.perId(), this.perTaskTitle()]
     try {
+      // send axios request for update data in database
       const response = await axios.post(
         `${BASE_URL}/eidtTodo`,
         JSON.stringify([
@@ -79,6 +96,9 @@ class ServerDataViewModel {
       console.log(error.message);
     }
   }
+
+  // use in top initial leftClass && rightClsss
+  // for show and hidden sectinos [update_box, add_box] index.html
   leftClassZero() {
     this.leftClass(0);
   }
@@ -87,70 +107,4 @@ class ServerDataViewModel {
   }
 }
 
-const createBodyRequest = (titleValue, completedValue) => {
-  const todoUserInput = JSON.stringify([
-    { Name: "taskTitle", Value: titleValue },
-    { Name: "completed", Value: completedValue },
-  ]);
-  return todoUserInput;
-};
-const sendFormDataTodo = async (data) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/createTodo`, data);
-    console.log(response);
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-const fetchTodos = async () => {
-  const todoItems = await DB.getTodoItems();
-  const ServerDataObject = new ServerDataViewModel(todoItems);
-  console.log(todoItems);
-
-  ServerDataObject.completedString.subscribe(() => {
-    if (ServerDataObject.completed() == true) {
-      ServerDataObject.completed(false);
-    } else {
-      ServerDataObject.completed(true);
-    }
-  });
-  ServerDataObject.whichShowData.subscribe(() => {
-    if (ServerDataObject.whichShowData() == "all") {
-      ServerDataObject.allTodo(todoItems);
-    }
-    if (ServerDataObject.whichShowData() == "done") {
-      ServerDataObject.allTodo(ServerDataObject.doneTodos);
-    }
-    if (ServerDataObject.whichShowData() == "notDone") {
-      ServerDataObject.allTodo(ServerDataObject.notDoneTodos);
-    }
-  });
-  ServerDataObject.leftClassStatus = ko.pureComputed(function () {
-    return ServerDataObject.leftClass() > 0 ? "left-0" : "";
-  }, ServerDataObject);
-  ServerDataObject.rightClassStatus = ko.pureComputed(function () {
-    return ServerDataObject.rightClsss() > 0 ? "right-0" : "";
-  }, ServerDataObject);
-
-  ko.applyBindings(ServerDataObject);
-  window.getVM = () => ServerDataObject;
-  const createTodoForm = document.getElementById("createTodoForm");
-
-  createTodoForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    console.log("send clicked");
-    sendFormDataTodo(
-      createBodyRequest(
-        ServerDataObject.taskTitle(),
-        ServerDataObject.completed()
-      )
-    );
-    const newTodo = {
-      taskTitle: ServerDataObject.taskTitle(),
-      completed: ServerDataObject.completed(),
-    };
-    ServerDataObject.addTodo(newTodo);
-  });
-};
-fetchTodos();
 // 0: {Id: 198, taskTitle: 'این یک داده آزمایشی است', completed: false}

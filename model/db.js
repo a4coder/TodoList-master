@@ -1,3 +1,5 @@
+import "../public/js/axios.min.js";
+
 const BASE_URL = "http://localhost:8008/servicebus/run";
 
 class DB {
@@ -12,3 +14,5 @@ class DB {
   };
 }
 DB.getTodoItems();
+
+export default DB;
