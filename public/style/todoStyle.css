@@ -187,7 +187,7 @@
   transition: 300ms ease;
   position: fixed;
   width: 100%;
-  background-color: #23272f;
+  background-color: #23272ff9;
   min-height: 100vh;
   top: 0;
   bottom: 0;
@@ -269,6 +269,7 @@
   margin-bottom: 2rem;
   border: none;
   outline: none;
+  background-color: #efefef;
 }
 
 #createTodo_box .createTodo form input#title {
@@ -298,8 +299,26 @@
   text-align: left;
 }
 
+#createTodo_box .createTodo form .submit button {
+  background-color: transparent;
+  color: #efefef;
+  padding: 0.3rem 1.3rem;
+  border: none;
+  outline: none;
+  border: 1px solid #efefef;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+#createTodo_box .createTodo form .submit button:hover {
+  color: #23272f;
+  border-color: #efefef;
+  background-color: #efefef;
+}
+
 #createTodo_box .createTodo form .submit input#submit {
   margin: auto;
+  border: 1px solid #23272f;
   background-color: #23272f;
   color: #efefef;
   padding: 0.3rem 1.3rem;
@@ -310,7 +329,7 @@
   transition: 300ms ease;
   position: fixed;
   width: 100%;
-  background-color: #23272f;
+  background-color: #23272ff9;
   min-height: 100vh;
   top: 0;
   bottom: 0;
@@ -392,6 +411,7 @@
   margin-bottom: 2rem;
   border: none;
   outline: none;
+  background-color: #efefef;
 }
 
 #updateTodo_box .updateTodo form#updateTodoForm input#title {
@@ -421,8 +441,26 @@
   text-align: left;
 }
 
+#updateTodo_box .updateTodo form#updateTodoForm .submit button {
+  background-color: transparent;
+  color: #efefef;
+  padding: 0.3rem 1.3rem;
+  border: none;
+  outline: none;
+  border: 1px solid #efefef;
+  -webkit-transition: 300ms ease;
+  transition: 300ms ease;
+}
+
+#updateTodo_box .updateTodo form#updateTodoForm .submit button:hover {
+  color: #23272f;
+  border-color: #efefef;
+  background-color: #efefef;
+}
+
 #updateTodo_box .updateTodo form#updateTodoForm .submit input#submit {
   margin: auto;
+  border: 1px solid #23272f;
   background-color: #23272f;
   color: #efefef;
   padding: 0.3rem 1.3rem;

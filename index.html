@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- topArrow -->
+    <!-- logo: favIcon -->
     <link rel="icon" href="public/assets/images/topArrow.svg" />
     <!-- css -->
     <link rel="stylesheet" href="public/style/bootstrap.min.css" />
@@ -55,6 +55,7 @@
             <label for="complete">کامل شده است</label>
           </div>
           <div class="submit">
+            <button data-bind="click: cancelRequest">لغو</button>
             <input type="submit" name="submit" id="submit" value="افزودن" />
           </div>
         </form>
@@ -92,7 +93,7 @@
             <label for="complete">کامل شده است</label>
           </div>
           <div class="submit">
-            <button>لغو درخواست</button>
+            <button data-bind="click: cancelRequest">لغو</button>
             <input
               data-bind="click: sendUpdatedTask"
               type="submit"

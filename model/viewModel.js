@@ -105,6 +105,9 @@ export default class ServerDataViewModel {
   rightClassZero() {
     this.rightClsss(0);
   }
+  // click cancel button
+  cancelRequest() {
+    this.rightClassZero();
+    this.leftClassZero();
+  }
 }
-
-// 0: {Id: 198, taskTitle: 'این یک داده آزمایشی است', completed: false}
