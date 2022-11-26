@@ -1,6 +1,6 @@
 import "../public/js/axios.min.js";
 
-const BASE_URL = "http://localhost:8008/servicebus/run";
+export const BASE_URL = "http://localhost:8008/servicebus/run";
 
 class DB {
   static getTodoItems = async () => {

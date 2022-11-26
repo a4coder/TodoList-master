@@ -1,4 +1,5 @@
 import "../public/js/axios.min.js";
+import { BASE_URL } from "./db.js";
 
 export default class ServerDataViewModel {
   constructor(data) {
@@ -53,16 +54,18 @@ export default class ServerDataViewModel {
 
   // delete task
   async deleteTask(id) {
-    const x = this.allTodo().filter((elem) => elem.Id != id);
-    this.allTodo(x);
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/deleteTodo`,
-        JSON.stringify([{ Name: "ID", Value: id }])
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
+    if (confirm("آیا از حذف این تسک مطمئنید ؟")) {
+      const x = this.allTodo().filter((elem) => elem.Id != id);
+      this.allTodo(x);
+      try {
+        const response = await axios.post(
+          `${BASE_URL}/deleteTodo`,
+          JSON.stringify([{ Name: "ID", Value: id }])
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   }
 
@@ -91,7 +94,17 @@ export default class ServerDataViewModel {
           { Name: "UID", Value: this.perId() },
         ])
       );
+      this.leftClass(0);
+      // update in viewmodel
+      let thisTodo = this.allTodo().filter((elem) => elem.Id == this.perId());
+      thisTodo = {
+        ...thisTodo[0],
+        taskTitle: this.perTaskTitle(),
+        completed: this.completed(),
+      };
+      alert("ویرایش با موفقیت انجام شد");
       console.log(response);
+      location.reload();
     } catch (error) {
       console.log(error.message);
     }

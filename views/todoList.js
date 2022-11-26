@@ -1,4 +1,5 @@
 import ServerDataViewModel from "../model/viewModel.js";
+import { BASE_URL } from "../model/db.js";
 import DB from "../model/db.js";
 
 export const fetchTodos = async () => {
@@ -36,24 +37,30 @@ export const fetchTodos = async () => {
 
   createTodoForm.addEventListener("submit", async function (event) {
     event.preventDefault();
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/createTodo`,
-        JSON.stringify([
-          { Name: "taskTitle", Value: ServerDataObject.taskTitle() },
-          { Name: "completed", Value: ServerDataObject.completed() },
-        ])
-      );
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
+    if (ServerDataObject.taskTitle()) {
+      try {
+        const response = await axios.post(
+          `${BASE_URL}/createTodo`,
+          JSON.stringify([
+            { Name: "taskTitle", Value: ServerDataObject.taskTitle() },
+            { Name: "completed", Value: ServerDataObject.completed() },
+          ])
+        );
+        ServerDataObject.rightClsss(0);
+        alert("تسک با موفقیت افزوده شد");
+        console.log(response);
+      } catch (error) {
+        console.log(error.message);
+      }
 
-    const newTodo = {
-      taskTitle: ServerDataObject.taskTitle(),
-      completed: ServerDataObject.completed(),
-    };
-    ServerDataObject.addTodo(newTodo);
+      const newTodo = {
+        taskTitle: ServerDataObject.taskTitle(),
+        completed: ServerDataObject.completed(),
+      };
+      ServerDataObject.addTodo(newTodo);
+    } else {
+      alert("لطفا عنوان تسک را وارد کنید");
+    }
   });
 };
 fetchTodos();
