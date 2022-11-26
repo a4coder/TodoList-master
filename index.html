@@ -107,125 +107,119 @@
     </div>
 
     <!-- Basic user interface -->
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-3">
-          <div id="customize">
-            <h2>تغییر وضعیت</h2>
-            <div class="customize_wrapper">
-              <div class="customize_box_0">
-                <button data-bind="click: ()=> rightClsss(1)">
-                  افزودن کار جدید
-                </button>
-              </div>
-              <div class="customize_box_1">
-                <input
-                  id="userNameInput"
-                  data-bind="value:userName,valueUpdate:'keyup'"
-                  placeholder="نام کاربری را وارد کنید"
-                />
-              </div>
-              <div class="customize_box_3">
-                <div><span>حالت پیشفرض انجام کار</span></div>
-                <div>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                    value="true"
-                    data-bind="checked: completedString"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    انجام شده
-                  </label>
-                </div>
-                <div>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    value="false"
-                    data-bind="checked: completedString"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    انجام نشده
-                  </label>
-                </div>
-              </div>
-              <div class="customize_box_4">
-                <p data-bind="click: () => whichShowData('all')">
-                  تعداد کل کارها: <span data-bind="text: numOfAllTodos"></span>
-                </p>
-              </div>
-              <div class="customize_box_5">
-                <p data-bind="click: () => whichShowData('done')">
-                  انجام شده: <span data-bind="text: numOfDoneTodos"></span>
-                </p>
-              </div>
-              <div class="customize_box_6">
-                <p data-bind="click: () => whichShowData('notDone')">
-                  انجام نشده: <span data-bind="text: numOfNotDoneTodos"></span>
-                </p>
-              </div>
+    <div id="base_homepage">
+      <div id="customize">
+        <h2>تغییر وضعیت</h2>
+        <div class="customize_wrapper">
+          <div class="customize_box_0">
+            <button data-bind="click: ()=> rightClsss(1)">
+              افزودن کار جدید
+            </button>
+          </div>
+          <div class="customize_box_1">
+            <input
+              id="userNameInput"
+              data-bind="value:userName,valueUpdate:'keyup'"
+              placeholder="نام کاربری را وارد کنید"
+            />
+          </div>
+          <div class="customize_box_3">
+            <div><span>حالت پیشفرض انجام کار</span></div>
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+                value="true"
+                data-bind="checked: completedString"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                انجام شده
+              </label>
+            </div>
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                id="flexRadioDefault2"
+                value="false"
+                data-bind="checked: completedString"
+              />
+              <label class="form-check-label" for="flexRadioDefault2">
+                انجام نشده
+              </label>
             </div>
           </div>
+          <div class="customize_box_4">
+            <p data-bind="click: () => whichShowData('all')">
+              تعداد کل کارها: <span data-bind="text: numOfAllTodos"></span>
+            </p>
+          </div>
+          <div class="customize_box_5">
+            <p data-bind="click: () => whichShowData('done')">
+              انجام شده: <span data-bind="text: numOfDoneTodos"></span>
+            </p>
+          </div>
+          <div class="customize_box_6">
+            <p data-bind="click: () => whichShowData('notDone')">
+              انجام نشده: <span data-bind="text: numOfNotDoneTodos"></span>
+            </p>
+          </div>
         </div>
-        <div class="col-9">
-          <div id="Todo_container">
-            <div id="todoList_box" data-bind="click: () => showTable(true)">
-              <div
-                data-bind=" hidden: showTable()"
-                id="todoList_box_1"
-                class="displayBlock"
-              >
-                <h3 data-bind="">لیست کارها</h3>
-                <p>نام کاربری: <span data-bind="text: userName"></span></p>
-                <div class="see">
-                  <h4>مشاهده لیست</h4>
-                  <i class="fa-solid fa-eye"></i>
-                </div>
-              </div>
-              <div
-                data-bind="visible: showTable()"
-                id="todoList_box2"
-                class="overflowScroll displayBlock"
-              >
-                <table id="todosTable">
-                  <thead>
-                    <tr>
-                      <th>شماره</th>
-                      <th>عنوان</th>
-                      <th>تکمیل</th>
-                      <th>ویرایش</th>
-                      <th>حذف</th>
-                    </tr>
-                  </thead>
-                  <tbody data-bind="foreach: allTodo()">
-                    <tr>
-                      <td data-bind="text: $index"></td>
-                      <td data-bind="text: $data.taskTitle"></td>
-                      <td data-bind="text: $data.completed"></td>
-                      <td class="edit">
-                        <button
-                          data-bind="click: ()=>$parent.showUpdateTask($data)"
-                        >
-                          ویراش
-                        </button>
-                      </td>
-                      <td class="delete">
-                        <button
-                          data-bind="click: ()=> $parent.deleteTask($data.Id)"
-                        >
-                          حذف
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+      </div>
+      <div id="Todo_container">
+        <div id="todoList_box" data-bind="click: () => showTable(true)">
+          <div
+            data-bind=" hidden: showTable()"
+            id="todoList_box_1"
+            class="displayBlock"
+          >
+            <h3 data-bind="">لیست کارها</h3>
+            <p>نام کاربری: <span data-bind="text: userName"></span></p>
+            <div class="see">
+              <h4>مشاهده لیست</h4>
+              <i class="fa-solid fa-eye"></i>
             </div>
+          </div>
+          <div
+            data-bind="visible: showTable()"
+            id="todoList_box2"
+            class="overflowScroll displayBlock"
+          >
+            <table id="todosTable">
+              <thead>
+                <tr>
+                  <th>شماره</th>
+                  <th>عنوان</th>
+                  <th>تکمیل</th>
+                  <th>ویرایش</th>
+                  <th>حذف</th>
+                </tr>
+              </thead>
+              <tbody data-bind="foreach: allTodo()">
+                <tr>
+                  <td data-bind="text: $index"></td>
+                  <td data-bind="text: $data.taskTitle"></td>
+                  <td data-bind="text: $data.completed"></td>
+                  <td class="edit">
+                    <button
+                      data-bind="click: ()=>$parent.showUpdateTask($data)"
+                    >
+                      ویراش
+                    </button>
+                  </td>
+                  <td class="delete">
+                    <button
+                      data-bind="click: ()=> $parent.deleteTask($data.Id)"
+                    >
+                      حذف
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

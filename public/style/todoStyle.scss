@@ -1,146 +1,154 @@
-/* قسمت شخصی سازی */
+#base_homepage {
+  /* قسمت شخصی سازی */
+  width: 90%;
+  margin: auto;
 
-#customize {
-  position: fixed;
-  width: 300px;
-  // background-color: #23272f;
-  background-color: rgba(88, 175, 223, 0.1);
-  box-shadow: 0 5px 8px #3a3a3a4d;
-  min-height: calc(100vh - 96px);
-  top: 48px;
-  bottom: 48px;
-  h2 {
-    box-shadow: 0 5px 8px #3a3a3a15;
-    text-align: center;
-    padding: 2rem;
-  }
-  .customize_wrapper {
-    & > div {
-      margin-bottom: 2rem;
-      & > * {
-        text-align: right;
-        color: #f6f7f9;
-        padding: 0.5rem 2rem 0.5rem 1rem;
-        width: 100%;
-        border: none;
-        outline: none;
-        background-color: rgba(88, 176, 223, 0.051);
-        transition: 300ms ease;
-        &:hover {
-          background-color: rgba(78, 156, 198, 0.1);
-        }
-      }
-    }
-    .customize_box_1 {
-      input {
-        box-shadow: 0 5px 8px #3a3a3a4d;
-      }
-    }
-  }
-}
-
-#Todo_container {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-  /* صفحه اول */
-  #todoList_box {
-    margin-bottom: 50px;
-    position: relative;
-    width: 100%;
+  #customize {
+    position: fixed;
+    width: 300px;
+    // background-color: #23272f;
+    background-color: rgba(88, 175, 223, 0.1);
+    box-shadow: 0 5px 8px #3a3a3a4d;
     min-height: calc(100vh - 96px);
-    background-color: #343a46;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
-    cursor: pointer;
-    .see {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 300ms ease;
-      margin-top: calc(90px + 30%);
-      background-color: #2f333d;
-      border-radius: 50% 30% 50px 30px;
-      padding: 1rem;
-      h4 {
-        transition: 300ms ease;
-        color: #07a3a4;
-      }
-      i {
-        margin-right: 1rem;
-        font-size: 5rem;
-        color: #07a3a4;
-        transition: 300ms ease;
-      }
+    top: 48px;
+    bottom: 48px;
+    h2 {
+      box-shadow: 0 5px 8px #3a3a3a15;
+      text-align: center;
+      padding: 2rem;
     }
-    h3 {
-      font-size: 2.25rem;
-      margin-top: 32px;
-      margin-bottom: 2rem;
-    }
-    &:hover {
-      h4 {
-        color: #60eff4;
-      }
-      i {
-        color: #60eff4;
-      }
-    }
-  }
-  #todoList_box2 {
-    width: 100%;
-    height: 100%;
-  }
-  /* صفحه دوم */
-  /* جدول لیست کار */
-  #todosTable {
-    position: absolute;
-    top: 1rem;
-    background-color: #343a46;
-    margin: auto;
-    width: 100%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    height: 500px;
-    border-collapse: collapse;
-    thead {
-      th {
-        font-size: 1.6rem;
-        padding: 1.2rem 0;
-      }
-    }
-    tbody {
-      tr:nth-child(even) {
-        background-color: #292f3925;
-      }
-      td {
-        font-size: 1.1rem;
-        padding: 0.7rem 0;
-      }
-      .edit {
-        button {
-          background-color: #60eff410;
-          outline: none;
+    .customize_wrapper {
+      & > div {
+        margin-bottom: 2rem;
+        & > * {
+          text-align: right;
+          color: #f6f7f9;
+          padding: 0.5rem 2rem 0.5rem 1rem;
+          width: 100%;
           border: none;
-          color: #fff;
-          padding: 0.2rem 0.6rem;
-          border-radius: 50px;
+          outline: none;
+          background-color: rgba(88, 176, 223, 0.051);
+          transition: 300ms ease;
+          &:hover {
+            background-color: rgba(78, 156, 198, 0.1);
+          }
         }
       }
-      .delete {
-        button {
-          background-color: #f460601e;
-          outline: none;
-          border: none;
-          color: #fff;
-          padding: 0.2rem 0.6rem;
-          border-radius: 50px;
+      .customize_box_1 {
+        input {
+          box-shadow: 0 5px 8px #3a3a3a4d;
+        }
+      }
+    }
+  }
+
+  #Todo_container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: calc(100% - 333px);
+    margin-top: 48px;
+    margin-right: auto;
+    min-height: calc(100vh);
+    /* صفحه اول */
+    #todoList_box {
+      margin-bottom: 50px;
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 96px);
+      background-color: #343a46;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+      .see {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 300ms ease;
+        margin-top: calc(90px + 30%);
+        background-color: #2f333d;
+        border-radius: 50% 30% 50px 30px;
+        padding: 1rem;
+        h4 {
+          transition: 300ms ease;
+          color: #07a3a4;
+        }
+        i {
+          margin-right: 1rem;
+          font-size: 5rem;
+          color: #07a3a4;
+          transition: 300ms ease;
+        }
+      }
+      h3 {
+        font-size: 2.25rem;
+        margin-top: 32px;
+        margin-bottom: 2rem;
+      }
+      &:hover {
+        h4 {
+          color: #60eff4;
+        }
+        i {
+          color: #60eff4;
+        }
+      }
+    }
+    #todoList_box2 {
+      width: 100%;
+      height: 100%;
+    }
+    /* صفحه دوم */
+    /* جدول لیست کار */
+    #todosTable {
+      position: absolute;
+      top: 1rem;
+      background-color: #343a46;
+      margin: auto;
+      width: 100%;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: center;
+      height: 500px;
+      border-collapse: collapse;
+      thead {
+        th {
+          font-size: 1.6rem;
+          padding: 1.2rem 0;
+        }
+      }
+      tbody {
+        tr:nth-child(even) {
+          background-color: #292f3925;
+        }
+        td {
+          font-size: 1.1rem;
+          padding: 0.7rem 0;
+        }
+        .edit {
+          button {
+            background-color: #60eff410;
+            outline: none;
+            border: none;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+          }
+        }
+        .delete {
+          button {
+            background-color: #f460601e;
+            outline: none;
+            border: none;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+          }
         }
       }
     }

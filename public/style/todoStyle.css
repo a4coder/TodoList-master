@@ -1,28 +1,27 @@
 @charset "UTF-8";
-/* قسمت شخصی سازی */
-#customize {
+#base_homepage {
+  /* قسمت شخصی سازی */
+  width: 90%;
+  margin: auto;
+}
+#base_homepage #customize {
   position: fixed;
   width: 300px;
   background-color: rgba(88, 175, 223, 0.1);
-  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
-          box-shadow: 0 5px 8px #3a3a3a4d;
+  box-shadow: 0 5px 8px rgba(58, 58, 58, 0.3019607843);
   min-height: calc(100vh - 96px);
   top: 48px;
   bottom: 48px;
 }
-
-#customize h2 {
-  -webkit-box-shadow: 0 5px 8px #3a3a3a15;
-          box-shadow: 0 5px 8px #3a3a3a15;
+#base_homepage #customize h2 {
+  box-shadow: 0 5px 8px rgba(58, 58, 58, 0.0823529412);
   text-align: center;
   padding: 2rem;
 }
-
-#customize .customize_wrapper > div {
+#base_homepage #customize .customize_wrapper > div {
   margin-bottom: 2rem;
 }
-
-#customize .customize_wrapper > div > * {
+#base_homepage #customize .customize_wrapper > div > * {
   text-align: right;
   color: #f6f7f9;
   padding: 0.5rem 2rem 0.5rem 1rem;
@@ -30,114 +29,77 @@
   border: none;
   outline: none;
   background-color: rgba(88, 176, 223, 0.051);
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
-
-#customize .customize_wrapper > div > *:hover {
+#base_homepage #customize .customize_wrapper > div > *:hover {
   background-color: rgba(78, 156, 198, 0.1);
 }
-
-#customize .customize_wrapper .customize_box_1 input {
-  -webkit-box-shadow: 0 5px 8px #3a3a3a4d;
-          box-shadow: 0 5px 8px #3a3a3a4d;
+#base_homepage #customize .customize_wrapper .customize_box_1 input {
+  box-shadow: 0 5px 8px rgba(58, 58, 58, 0.3019607843);
 }
-
-#Todo_container {
+#base_homepage #Todo_container {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  width: calc(100% - 333px);
+  margin-top: 48px;
+  margin-right: auto;
+  min-height: 100vh;
   /* صفحه اول */
   /* صفحه دوم */
   /* جدول لیست کار */
 }
-
-#Todo_container #todoList_box {
+#base_homepage #Todo_container #todoList_box {
   margin-bottom: 50px;
   position: relative;
   width: 100%;
   min-height: calc(100vh - 96px);
   background-color: #343a46;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   flex-direction: column;
   cursor: pointer;
 }
-
-#Todo_container #todoList_box .see {
-  display: -webkit-box;
-  display: -ms-flexbox;
+#base_homepage #Todo_container #todoList_box .see {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-transition: 300ms ease;
+  align-items: center;
+  justify-content: center;
   transition: 300ms ease;
   margin-top: calc(90px + 30%);
   background-color: #2f333d;
   border-radius: 50% 30% 50px 30px;
   padding: 1rem;
 }
-
-#Todo_container #todoList_box .see h4 {
-  -webkit-transition: 300ms ease;
+#base_homepage #Todo_container #todoList_box .see h4 {
   transition: 300ms ease;
   color: #07a3a4;
 }
-
-#Todo_container #todoList_box .see i {
+#base_homepage #Todo_container #todoList_box .see i {
   margin-right: 1rem;
   font-size: 5rem;
   color: #07a3a4;
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
-
-#Todo_container #todoList_box h3 {
+#base_homepage #Todo_container #todoList_box h3 {
   font-size: 2.25rem;
   margin-top: 32px;
   margin-bottom: 2rem;
 }
-
-#Todo_container #todoList_box:hover h4 {
+#base_homepage #Todo_container #todoList_box:hover h4 {
   color: #60eff4;
 }
-
-#Todo_container #todoList_box:hover i {
+#base_homepage #Todo_container #todoList_box:hover i {
   color: #60eff4;
 }
-
-#Todo_container #todoList_box2 {
+#base_homepage #Todo_container #todoList_box2 {
   width: 100%;
   height: 100%;
 }
-
-#Todo_container #todosTable {
+#base_homepage #Todo_container #todosTable {
   position: absolute;
   top: 1rem;
   background-color: #343a46;
@@ -149,32 +111,27 @@
   height: 500px;
   border-collapse: collapse;
 }
-
-#Todo_container #todosTable thead th {
+#base_homepage #Todo_container #todosTable thead th {
   font-size: 1.6rem;
   padding: 1.2rem 0;
 }
-
-#Todo_container #todosTable tbody tr:nth-child(even) {
-  background-color: #292f3925;
+#base_homepage #Todo_container #todosTable tbody tr:nth-child(even) {
+  background-color: rgba(41, 47, 57, 0.1450980392);
 }
-
-#Todo_container #todosTable tbody td {
+#base_homepage #Todo_container #todosTable tbody td {
   font-size: 1.1rem;
   padding: 0.7rem 0;
 }
-
-#Todo_container #todosTable tbody .edit button {
-  background-color: #60eff410;
+#base_homepage #Todo_container #todosTable tbody .edit button {
+  background-color: rgba(96, 239, 244, 0.062745098);
   outline: none;
   border: none;
   color: #fff;
   padding: 0.2rem 0.6rem;
   border-radius: 50px;
 }
-
-#Todo_container #todosTable tbody .delete button {
-  background-color: #f460601e;
+#base_homepage #Todo_container #todosTable tbody .delete button {
+  background-color: rgba(244, 96, 96, 0.1176470588);
   outline: none;
   border: none;
   color: #fff;
@@ -183,122 +140,87 @@
 }
 
 #createTodo_box {
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
   position: fixed;
   width: 100%;
-  background-color: #23272ff9;
+  background-color: rgba(35, 39, 47, 0.9764705882);
   min-height: 100vh;
   top: 0;
   bottom: 0;
   right: -100%;
   z-index: 99;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: flex-start;
+  justify-content: center;
   color: #efefef;
 }
-
 #createTodo_box .close {
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
-
 #createTodo_box .close i {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
-
 #createTodo_box .createTodo {
   position: relative;
   margin-top: 150px;
   background-color: rgba(88, 175, 223, 0.12);
   padding: 3rem 2rem;
 }
-
 #createTodo_box .createTodo img {
   width: 100px;
   height: 100px;
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
   padding-right: 1rem;
 }
-
 #createTodo_box .createTodo p {
   padding-right: 2rem;
   color: #efefef;
 }
-
 #createTodo_box .createTodo h3 {
   color: #efefef;
   font-size: 2.25rem;
   margin-bottom: 2rem;
   padding-right: 2rem;
 }
-
 #createTodo_box .createTodo form {
   width: 400px;
   height: auto;
   padding: 4rem;
   padding-right: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
   background-color: rgba(88, 175, 223, 0.1);
 }
-
 #createTodo_box .createTodo form input {
   margin-bottom: 2rem;
   border: none;
   outline: none;
   background-color: #efefef;
 }
-
 #createTodo_box .createTodo form input#title {
   width: 300px !important;
   padding: 0.4rem 0.6rem;
   font-size: 1rem;
 }
-
-#createTodo_box .createTodo form input#title::-webkit-input-placeholder {
+#createTodo_box .createTodo form input#title::-moz-placeholder {
   color: #353535;
 }
-
 #createTodo_box .createTodo form input#title:-ms-input-placeholder {
   color: #353535;
 }
-
-#createTodo_box .createTodo form input#title::-ms-input-placeholder {
-  color: #353535;
-}
-
 #createTodo_box .createTodo form input#title::placeholder {
   color: #353535;
 }
-
 #createTodo_box .createTodo form .submit {
   width: 100%;
   text-align: left;
 }
-
 #createTodo_box .createTodo form .submit button {
   background-color: transparent;
   color: #efefef;
@@ -306,16 +228,13 @@
   border: none;
   outline: none;
   border: 1px solid #efefef;
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
-
 #createTodo_box .createTodo form .submit button:hover {
   color: #23272f;
   border-color: #efefef;
   background-color: #efefef;
 }
-
 #createTodo_box .createTodo form .submit input#submit {
   margin: auto;
   border: 1px solid #23272f;
@@ -325,122 +244,87 @@
 }
 
 #updateTodo_box {
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
   position: fixed;
   width: 100%;
-  background-color: #23272ff9;
+  background-color: rgba(35, 39, 47, 0.9764705882);
   min-height: 100vh;
   top: 0;
   bottom: 0;
   left: -100%;
   z-index: 99;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: flex-start;
+  justify-content: center;
   color: #efefef;
 }
-
 #updateTodo_box .close {
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
-
 #updateTodo_box .close i {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
-
 #updateTodo_box .updateTodo {
   position: relative;
   margin-top: 150px;
   background-color: rgba(88, 175, 223, 0.12);
   padding: 3rem 2rem;
 }
-
 #updateTodo_box .updateTodo img {
   width: 100px;
   height: 100px;
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
   padding-right: 1rem;
 }
-
 #updateTodo_box .updateTodo p {
   padding-right: 2rem;
   color: #efefef;
 }
-
 #updateTodo_box .updateTodo h3 {
   color: #efefef;
   font-size: 2.25rem;
   margin-bottom: 2rem;
   padding-right: 2rem;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm {
   width: 400px;
   height: auto;
   padding: 4rem;
   padding-right: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
   background-color: rgba(88, 175, 223, 0.1);
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm input {
   margin-bottom: 2rem;
   border: none;
   outline: none;
   background-color: #efefef;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm input#title {
   width: 300px !important;
   padding: 0.4rem 0.6rem;
   font-size: 1rem;
 }
-
-#updateTodo_box .updateTodo form#updateTodoForm input#title::-webkit-input-placeholder {
+#updateTodo_box .updateTodo form#updateTodoForm input#title::-moz-placeholder {
   color: #353535;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm input#title:-ms-input-placeholder {
   color: #353535;
 }
-
-#updateTodo_box .updateTodo form#updateTodoForm input#title::-ms-input-placeholder {
-  color: #353535;
-}
-
 #updateTodo_box .updateTodo form#updateTodoForm input#title::placeholder {
   color: #353535;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm .submit {
   width: 100%;
   text-align: left;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm .submit button {
   background-color: transparent;
   color: #efefef;
@@ -448,16 +332,13 @@
   border: none;
   outline: none;
   border: 1px solid #efefef;
-  -webkit-transition: 300ms ease;
   transition: 300ms ease;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm .submit button:hover {
   color: #23272f;
   border-color: #efefef;
   background-color: #efefef;
 }
-
 #updateTodo_box .updateTodo form#updateTodoForm .submit input#submit {
   margin: auto;
   border: 1px solid #23272f;
@@ -472,5 +353,4 @@
 
 .left-0 {
   left: 0 !important;
-}
-/*# sourceMappingURL=todoStyle.css.map */
+}/*# sourceMappingURL=todoStyle.css.map */
