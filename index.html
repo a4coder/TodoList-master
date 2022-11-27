@@ -202,10 +202,22 @@
                 <tr>
                   <td data-bind="text: $index"></td>
                   <td>
-                    <input data-bind="value: $data.taskTitle" />
+                    <input
+                      data-bind="event:{ blur: $parent.onChangeTaskTitleInput },value: $data.taskTitle, valueUpdate:'keyup'"
+                    />
                   </td>
-                  <td data-bind="text: $data.completed"></td>
-                  <!-- <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td> -->
+                  <!-- <td data-bind="text: completedCovertor(completed)"></td> -->
+                  <!-- ko if: $data.completed -->
+                  <td><span class="completedTask"> کامل شده </span></td>
+                  <!-- /ko -->
+                  <!-- ko ifnot: $data.completed  -->
+                  <td><span class="onCompletedTask">کامل نشده</span></td>
+                  <!-- /ko -->
+                  <!-- <td>
+                    <select
+                      data-bind="options: $root.completedOptions, value: completed, optionsText: 'mealName'"
+                    ></select>
+                  </td> -->
                   <td class="edit">
                     <button
                       data-bind="click: ()=>$parent.showUpdateTask($data)"

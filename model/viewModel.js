@@ -123,4 +123,23 @@ export default class ServerDataViewModel {
     this.rightClassZero();
     this.leftClassZero();
   }
+
+  //onChangeTaskTitleInput
+  async onChangeTaskTitleInput(data) {
+    console.log(data);
+    try {
+      // send axios request for update data in database
+      const response = await axios.post(
+        `${BASE_URL}/eidtTodo`,
+        JSON.stringify([
+          { Name: "taskTitle", Value: data.taskTitle },
+          { Name: "completed", Value: data.completed },
+          { Name: "UID", Value: data.Id },
+        ])
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }

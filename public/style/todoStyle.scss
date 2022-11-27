@@ -129,6 +129,29 @@
         td {
           font-size: 1.1rem;
           padding: 0.7rem 0;
+          select {
+            option {
+              color {
+                color: black;
+              }
+            }
+          }
+          input {
+            background-color: transparent;
+            color: inherit;
+            border: none;
+            outline: none;
+          }
+          .completedTask {
+            background-color: rgba(36, 111, 36, 0.25);
+            padding: 0.3rem 0.4rem;
+            border-radius: 1.2rem;
+          }
+          .onCompletedTask {
+            background-color: rgba(134, 36, 36, 0.25);
+            padding: 0.3rem 0.4rem;
+            border-radius: 1.2rem;
+          }
         }
         .edit {
           button {
