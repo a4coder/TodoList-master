@@ -1,6 +1,7 @@
 import ServerDataViewModel from "../model/viewModel.js";
 import { BASE_URL } from "../model/db.js";
 import DB from "../model/db.js";
+import { Toast } from "./toast.js";
 
 export const fetchTodos = async () => {
   const todoItems = await DB.getTodoItems();
@@ -47,7 +48,7 @@ export const fetchTodos = async () => {
           ])
         );
         ServerDataObject.rightClsss(0);
-        alert("تسک با موفقیت افزوده شد");
+        Toast.success("تسک با موفقیت افزوده شد");
         console.log(response);
       } catch (error) {
         console.log(error.message);
@@ -59,7 +60,7 @@ export const fetchTodos = async () => {
       };
       ServerDataObject.addTodo(newTodo);
     } else {
-      alert("لطفا عنوان تسک را وارد کنید");
+      Toast.warnning("لطفا عنوان تسک را وارد کنید");
     }
   });
 };

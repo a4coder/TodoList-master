@@ -1,4 +1,5 @@
 import "../public/js/axios.min.js";
+import { Toast } from "../views/toast.js";
 import { BASE_URL } from "./db.js";
 
 export default class ServerDataViewModel {
@@ -102,9 +103,12 @@ export default class ServerDataViewModel {
         taskTitle: this.perTaskTitle(),
         completed: this.completed(),
       };
-      alert("ویرایش با موفقیت انجام شد");
+
+      Toast.success("ویرایش با موفقیت انجام شد");
       console.log(response);
-      location.reload();
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 2000);
     } catch (error) {
       console.log(error.message);
     }
